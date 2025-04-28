@@ -1,6 +1,6 @@
 package br.com.fiap.chapecos.handler;
 
-import br.com.fiap.chapecos.config.ApiError;
+import br.com.fiap.chapecos.config.configuration.ApiError;
 import br.com.fiap.chapecos.exception.EmailAlreadyExistsException;
 import br.com.fiap.chapecos.exception.RoleNotFoundException;
 import br.com.fiap.chapecos.exception.UserAlreadyExistsException;

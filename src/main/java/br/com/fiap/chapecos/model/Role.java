@@ -1,27 +1,17 @@
 package br.com.fiap.chapecos.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+public enum Role {
 
-import java.util.List;
+    ADMIN("admin"),
+    USER("user");
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
-@ToString
-@Entity
-@Table(name = "T_ROLE")
-public class Role {
+    private String role;
 
-    @Id
-    @SequenceGenerator(sequenceName = "seq_role", name = "seq_role", allocationSize = 1)
-    @GeneratedValue(generator = "seq_role", strategy = GenerationType.SEQUENCE)
-    private Long id;
+    Role(String role) {
+        this.role = role;
+    }
 
-    private String description;
-
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
+    public String getRole() {
+        return role;
+    }
 }

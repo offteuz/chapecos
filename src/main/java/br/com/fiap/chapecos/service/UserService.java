@@ -7,9 +7,7 @@ import br.com.fiap.chapecos.exception.EmailAlreadyExistsException;
 import br.com.fiap.chapecos.exception.UserAlreadyExistsException;
 import br.com.fiap.chapecos.exception.UserNotFoundException;
 import br.com.fiap.chapecos.mapper.UserMapper;
-import br.com.fiap.chapecos.model.Role;
 import br.com.fiap.chapecos.model.User;
-import br.com.fiap.chapecos.repository.RoleRepository;
 import br.com.fiap.chapecos.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +18,11 @@ public class UserService {
 
     public final UserRepository userRepository;
 
-    public final RoleRepository roleRepository;
-
     public final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper, RoleRepository roleRepository) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
-        this.roleRepository = roleRepository;
     }
 
     public UserResponseDTO create(UserRequestDTO dto) {
@@ -40,11 +35,6 @@ public class UserService {
         if (userRepository.existsUserByUserName(dto.userName())) {
             throw new UserAlreadyExistsException("O nome de usuário informado já está em uso por outro usuário. Verifique!");
         }
-
-        Role role = roleRepository.findById(dto.roleId())
-                .orElseThrow(() -> new RuntimeException("Papel de usuário não entrada. Verifique!"));
-
-        user.setRole(role);
 
         return new UserResponseDTO(userRepository.save(user));
     }

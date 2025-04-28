@@ -15,7 +15,7 @@ public record UserRoleResponseDTO(
         this(
                 user.getId(),
                 user.getEmail(),
-                user.getUserName()
+                user.getUsername()
         );
     }
 }

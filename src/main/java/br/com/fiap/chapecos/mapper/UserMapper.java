@@ -10,6 +10,5 @@ public interface UserMapper {
 
     UserRequestDTO dto(User user);
 
-    @Mapping(target = "role", ignore = true)
     User user(UserRequestDTO dto);
 }
