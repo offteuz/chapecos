@@ -1,10 +1,7 @@
 package br.com.fiap.chapecos.handler;
 
 import br.com.fiap.chapecos.config.configuration.ApiError;
-import br.com.fiap.chapecos.exception.EmailAlreadyExistsException;
-import br.com.fiap.chapecos.exception.RoleNotFoundException;
-import br.com.fiap.chapecos.exception.UserAlreadyExistsException;
-import br.com.fiap.chapecos.exception.UserNotFoundException;
+import br.com.fiap.chapecos.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -76,7 +73,7 @@ public class RestExceptionHandler {
         return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler({IllegalArgumentException.class, PasswordInvalidException.class})
     public ResponseEntity<ApiError> illegalArgumentException(IllegalArgumentException e) {
         ApiError apiError = ApiError
                 .builder()

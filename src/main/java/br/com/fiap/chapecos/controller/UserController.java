@@ -20,12 +20,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/create/v0/user")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserResponseDTO create(@Valid @RequestBody UserRequestDTO dto) {
-        return userService.create(dto);
-    }
-
     @GetMapping("/find-all/v0/user")
     @ResponseStatus(HttpStatus.OK)
     public List<UserResponseDTO> findAll() {
@@ -44,13 +38,13 @@ public class UserController {
         return userService.update(idUser, dto);
     }
 
-    @DeleteMapping("delete/v0/user/{idUser}")
+    @DeleteMapping("/delete/v0/user/{idUser}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long idUser) {
         userService.delete(idUser);
     }
 
-    @PatchMapping("update-password/v0/user/{idUser}")
+    @PatchMapping("/update-password/v0/user/{idUser}")
     @ResponseStatus(HttpStatus.OK)
     public void updatePassword(@PathVariable Long idUser, @Valid @RequestBody UserUpdatePasswordRequestDTO dto) {
         userService.updatePassword(idUser, dto);

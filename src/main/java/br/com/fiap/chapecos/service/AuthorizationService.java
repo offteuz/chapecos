@@ -1,5 +1,6 @@
 package br.com.fiap.chapecos.service;
 
+import br.com.fiap.chapecos.exception.UserNotFoundException;
 import br.com.fiap.chapecos.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +17,9 @@ public class AuthorizationService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUserName(username);
+    public UserDetails loadUserByUsername(String input) throws UsernameNotFoundException {
+        return userRepository.findByUserName(input)
+                .or(() -> userRepository.findByEmail(input))
+                .orElseThrow(UserNotFoundException::new);
     }
 }

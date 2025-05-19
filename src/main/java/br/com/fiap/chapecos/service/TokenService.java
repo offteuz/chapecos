@@ -1,5 +1,7 @@
 package br.com.fiap.chapecos.service;
 
+import br.com.fiap.chapecos.exception.GenerateTokenErrorException;
+import br.com.fiap.chapecos.exception.ValidateTokenErrorException;
 import br.com.fiap.chapecos.model.User;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -26,7 +28,7 @@ public class TokenService {
                     .sign(algorithm);
             return token;
         } catch (JWTCreationException exception) {
-            throw new RuntimeException("Ocorreu um erro ao GERAR o token. Verifique!", exception);
+            throw new GenerateTokenErrorException("Ocorreu um erro ao GERAR o token. Verifique!");
         }
 
     }
@@ -40,7 +42,7 @@ public class TokenService {
                     .verify(token)
                     .getSubject();
         } catch (JWTCreationException exception) {
-            throw new RuntimeException("Ocorreu um erro ao VALIDAR o token. Verifique!", exception);
+            throw new ValidateTokenErrorException("Ocorreu um erro ao VALIDAR o token. Verifique!");
         }
     }
 

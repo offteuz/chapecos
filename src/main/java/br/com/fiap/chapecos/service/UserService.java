@@ -4,6 +4,7 @@ import br.com.fiap.chapecos.dto.request.UserRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserUpdatePasswordRequestDTO;
 import br.com.fiap.chapecos.dto.response.UserResponseDTO;
 import br.com.fiap.chapecos.exception.EmailAlreadyExistsException;
+import br.com.fiap.chapecos.exception.PasswordInvalidException;
 import br.com.fiap.chapecos.exception.UserAlreadyExistsException;
 import br.com.fiap.chapecos.exception.UserNotFoundException;
 import br.com.fiap.chapecos.mapper.UserMapper;
@@ -23,20 +24,6 @@ public class UserService {
     public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
-    }
-
-    public UserResponseDTO create(UserRequestDTO dto) {
-        User user = userMapper.user(dto);
-
-        if (userRepository.existsUserByEmail(dto.email())) {
-            throw new EmailAlreadyExistsException("O e-mail informado já está em uso por outro usuário. Verifique!");
-        }
-
-        if (userRepository.existsUserByUserName(dto.userName())) {
-            throw new UserAlreadyExistsException("O nome de usuário informado já está em uso por outro usuário. Verifique!");
-        }
-
-        return new UserResponseDTO(userRepository.save(user));
     }
 
     public List<UserResponseDTO> findAll() {
@@ -74,7 +61,7 @@ public class UserService {
                 .orElseThrow(() -> new UserNotFoundException("Usuário não encontrado. Verifique!"));
 
         if (!dto.currentPassword().equals(user.getPassword())) {
-            throw new IllegalArgumentException("Senha atual inválida!");
+            throw new PasswordInvalidException("Senha atual inválida!");
         }
 
         user.setPassword(dto.newPassword());

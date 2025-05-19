@@ -12,8 +12,6 @@ public record UserResponseDTO(
 
         String userName,
 
-        String password,
-
         AddressResponseDTO address,
 
         Role role,
@@ -26,7 +24,6 @@ public record UserResponseDTO(
                 user.getId(),
                 user.getEmail(),
                 user.getUsername(),
-                user.getPassword(),
                 new AddressResponseDTO(user.getAddress()),
                 user.getRole(),
                 new AuditResponseDTO(user.getAudit().getCreateAs(), user.getAudit().getUpdateAs())
