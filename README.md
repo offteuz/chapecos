@@ -18,42 +18,58 @@ A arquitetura foi pensada para ser **segura, escalável e de fácil manutenção
 
 O sistema contempla dois perfis de usuário:
 
-- **Dono de Restaurante**
-- **Cliente**
+- **Dono de Restaurante**;
+- **Cliente**.
 
 ---
 ### 📄 Dados do Usuário
 
 Os seguintes campos são utilizados no cadastro:
 
-- `nome`: Nome completo (String)
-- `email`: Endereço de e-mail (String)
-- `login`: Nome de usuário (String)
-- `senha`: Senha de acesso (String)
-- `dataUltimaAlteracao`: Data da última atualização (Date)
-- `endereco`: Endereço completo (String)
+- `nome`: Nome completo (String);
+- `email`: Endereço de e-mail (String);
+- `login`: Nome de usuário (String);
+- `senha`: Senha de acesso (String);
+- `dataUltimaAlteracao`: Data da última atualização (Date);
+- `endereco`: Endereço completo (String).
 
 ---
 
 ## ✅ Funcionalidades Implementadas
 
-- [x]  Cadastro de usuários
-- [x]  Atualização de informações do usuário
-- [x]  Exclusão de usuários
-- [x]  Troca de senha
-- [x]  Validação de login
+- [x]  Cadastro de usuários;
+- [x]  Atualização de informações do usuário;
+- [x]  Exclusão de usuários;
+- [x]  Troca de senha;
+- [x]  Validação de login.
 
 ---
 
 ## 📦 Tecnologias Utilizadas
 
-- Java 17
-- Spring Boot 3.x
-- Spring Data JPA
-- Banco de dados PostgreSQL
-- Docker + Docker Compose
-- Maven
-- Postman (para testes)
+- Java 17;
+- Spring Boot 3.4.4;
+- Dependencias:
+  - Spring Data JPA;
+  - Spring Data JBDC;
+  - Spring Validation;
+  - Spring Security;
+  - Spring Security Test;
+  - Spring Web;
+  - Spring Devtools;
+  - Spring Docker Compose;
+  - Spring Test;
+  - Spring OpenAPI;
+  - Flyway Core;
+  - Flyway PostgreSQL;
+  - PostgreSQL;
+  - Lombok;
+  - Mapstruct;
+  - Auth0 Java JWT.
+- Banco de dados PostgreSQL;
+- Docker + Docker Compose;
+- Maven;
+- Postman API.
 
 ---
 
@@ -61,8 +77,8 @@ Os seguintes campos são utilizados no cadastro:
 
 ### Pré-requisitos
 
-- Git
-- Docker e Docker Compose instalados
+- Git;
+- Docker e Docker Compose instalados;
 
 ### Passos
 
@@ -78,10 +94,9 @@ Os seguintes campos são utilizados no cadastro:
    ```
 
 3. A API estará disponível em:
-  ```
-  http://localhost:8080
-
-  ```
+   ```
+   http://localhost:8080
+   ```
 
 ## 📂 Estrutura de Projeto
 
@@ -89,32 +104,42 @@ Os seguintes campos são utilizados no cadastro:
   src/
   ├── main/
   │   ├── java/
-  │   │   └── com.seuprojeto
+  │   │   └── br.com.fiap.chapecos
+  │   │       ChapecosApplication.Java (Main)
+  │   │       ├── config/
   │   │       ├── controller/
+  │   │       ├── dto/
+  │   │       ├── exception/
+  │   │       ├── handler/
+  │   │       ├── mapper/
   │   │       ├── model/
   │   │       ├── repository/
   │   │       └── service/
   │   └── resources/
   │       ├── application.properties
+  .env
   docker-compose.yml
   ```
 
 ## 🛠️ Endpoints da API
 
-| Método | Endpoint                   | Descrição                  |
-| ------ | -------------------------- | -------------------------- |
-| POST   | `/api/usuarios`            | Criar novo usuário         |
-| GET    | `/api/usuarios`            | Listar todos os usuários   |
-| GET    | `/api/usuarios/{id}`       | Buscar usuário por ID      |
-| PUT    | `/api/usuarios/{id}`       | Atualizar dados do usuário |
-| DELETE | `/api/usuarios/{id}`       | Deletar usuário            |
-| POST   | `/api/usuarios/login`      | Validação de login         |
-| PUT    | `/api/usuarios/senha/{id}` | Troca de senha do usuário  |
+
+| Método | Endpoint                            | Descrição                  |
+| ------ |-------------------------------------| -------------------------- |
+| POST   | `/auth/register/v0`                 | Criar novo usuário         |
+| POST   | `/auth/login/v0`                    | Validação de login         |
+| GET    | `/find-all/v0/user`                 | Listar todos os usuários   |
+| GET    | `/find-by-id/v0/user/{idUser}`      | Buscar usuário por ID      |
+| PUT    | `/update/v0/user/{idUser}`          | Atualizar dados do usuário |
+| PUT    | `/update-password/v0/user/{idUser}` | Troca de senha do usuário  |
+| DELETE | `/delete/v0/user/{idUser}`          | Deletar usuário            |
+
+
 
 
 ## 📄 Documentação Técnica
 
-A documentação da API pode ser visualizada via Swagger após subir a aplicação:
+A documentação da API pode ser visualizada via **Swagger** após subir a aplicação:
 
   ```
   http://localhost:8080/swagger-ui.html
