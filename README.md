@@ -167,7 +167,7 @@ Este projeto está licenciado sob a **MIT License**.
 
 Francisco Aurizelio de Sousa
   - `Email`: franads@gmail.com
-  - `Github`:
+  - `Github`: https://github.com/faurizel
 
 Lucas Herculano Amaro
   - `Email`: lucash.96@hotmail.com
