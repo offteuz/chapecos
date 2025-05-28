@@ -93,7 +93,12 @@ Os seguintes campos são utilizados no cadastro:
    docker-compose up --build
    ```
 
-3. A API estará disponível em:
+3. Execute a aplicação:
+   ```
+   Run 'ChapecosApplication'
+   ```
+   
+4. A **API** estará disponível na seguinte URL:
    ```
    http://localhost:8080
    ```
@@ -167,7 +172,7 @@ Este projeto está licenciado sob a **MIT License**.
 
 Francisco Aurizelio de Sousa
   - `Email`: franads@gmail.com
-  - `Github`:
+  - `Github`: https://github.com/faurizel
 
 Lucas Herculano Amaro
   - `Email`: lucash.96@hotmail.com
