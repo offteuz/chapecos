@@ -93,7 +93,12 @@ Os seguintes campos são utilizados no cadastro:
    docker-compose up --build
    ```
 
-3. A API estará disponível em:
+3. Execute a aplicação:
+   ```
+   Run 'ChapecosApplication'
+   ```
+   
+4. A **API** estará disponível na seguinte URL:
    ```
    http://localhost:8080
    ```
