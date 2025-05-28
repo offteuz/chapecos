@@ -35,7 +35,7 @@ public class AuthController {
         this.tokenService = tokenService;
     }
 
-    @PostMapping("/auth/login/v0")
+    @PostMapping("/auth/v1/login")
     public ResponseEntity login(@Valid @RequestBody UserLoginRequestDTO dto) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(dto.identifier(), dto.password());
 
@@ -46,13 +46,15 @@ public class AuthController {
         return ResponseEntity.ok(new TokenResponseDTO(token));
     }
 
-    @PostMapping("/auth/register/v0")
+    @PostMapping("/auth/v1/register")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity register(@Valid @RequestBody UserRequestDTO dto) {
-        if (this.userRepository.existsUserByUserName(dto.userName())) return ResponseEntity.badRequest().build();
+        if (this.userRepository.existsUserByUserName(dto.userName()) || this.userRepository.existsUserByEmail(dto.email())) {
+            return ResponseEntity.badRequest().build();
+        }
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(dto.password());
-        User newUser = new User(dto.email(), dto.userName(), encryptedPassword, dto.address(), dto.role());
+        User newUser = new User(dto.email(), dto.userName(), encryptedPassword, dto.address());
 
         this.userRepository.save(newUser);
 

@@ -2,6 +2,7 @@ package br.com.fiap.chapecos.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.Constraint;
 import jakarta.validation.Valid;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,12 +19,18 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "T_USER")
+@Table(name = "T_USER",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uk_user_email", columnNames = "email"),
+                @UniqueConstraint(name = "uk_user_user_name", columnNames = "user_name")
+        }
+)
 public class User implements UserDetails {
 
     @Id
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario", allocationSize = 1)
     @GeneratedValue(generator = "seq_usuario", strategy = GenerationType.SEQUENCE)
+    @Column(name = "id_user")
     private Long id;
 
     @Column(unique = true)
@@ -44,12 +51,18 @@ public class User implements UserDetails {
     @Valid
     private Audit audit;
 
-    public User(String email, String userName, String password, Address address, Role role) {
+    @PrePersist
+    public void onPrePersist() {
+        if (this.role == null) {
+            this.setRole(Role.USER);
+        }
+    }
+
+    public User(String email, String userName, String password, Address address) {
         this.email = email;
         this.userName = userName;
         this.password = password;
         this.address = address;
-        this.role = role;
     }
 
     @Override

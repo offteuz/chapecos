@@ -30,9 +30,17 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/api/auth/login/v0").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/register/v0").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api").hasRole("ADMIN")
+                        /* Swagger */
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/v1/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/v1/register").permitAll()
+                        /* User */
+                        .requestMatchers(HttpMethod.GET, "/api/user/v1/find-all").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/user/v1/find-by-id/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/user/v1/update/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/api/user/v1/update-password/**").permitAll()
+                        .requestMatchers(HttpMethod.PATCH, "/api/user/v1/update-role/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/user/v1/delete/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

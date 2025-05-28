@@ -1,8 +1,11 @@
 package br.com.fiap.chapecos.controller;
 
 import br.com.fiap.chapecos.dto.request.UserRequestDTO;
+import br.com.fiap.chapecos.dto.request.UserRoleRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserUpdatePasswordRequestDTO;
+import br.com.fiap.chapecos.dto.request.UserUpdateRoleRequestDTO;
 import br.com.fiap.chapecos.dto.response.UserResponseDTO;
+import br.com.fiap.chapecos.model.Role;
 import br.com.fiap.chapecos.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -20,33 +23,39 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/find-all/v0/user")
+    @GetMapping("/user/v1/find-all")
     @ResponseStatus(HttpStatus.OK)
     public List<UserResponseDTO> findAll() {
         return userService.findAll();
     }
 
-    @GetMapping("/find-by-id/v0/user/{idUser}")
+    @GetMapping("/user/v1/find-by-id/{idUser}")
     @ResponseStatus(HttpStatus.OK)
     public UserResponseDTO findById(@PathVariable Long idUser) {
         return userService.findById(idUser);
     }
 
-    @PutMapping("/update/v0/user/{idUser}")
+    @PutMapping("/user/v1/update/{idUser}")
     @ResponseStatus(HttpStatus.OK)
-    public UserResponseDTO update(@PathVariable Long idUser, @Valid @RequestBody UserRequestDTO dto) {
+    public UserResponseDTO update(@PathVariable Long idUser, @Valid @RequestBody UserRoleRequestDTO dto) {
         return userService.update(idUser, dto);
     }
 
-    @DeleteMapping("/delete/v0/user/{idUser}")
+    @DeleteMapping("/user/v1/delete/{idUser}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long idUser) {
         userService.delete(idUser);
     }
 
-    @PatchMapping("/update-password/v0/user/{idUser}")
+    @PatchMapping("/user/v1/update-password/{idUser}")
     @ResponseStatus(HttpStatus.OK)
     public void updatePassword(@PathVariable Long idUser, @Valid @RequestBody UserUpdatePasswordRequestDTO dto) {
         userService.updatePassword(idUser, dto);
+    }
+
+    @PatchMapping("/user/v1/update-role/{idUser}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updatePassword(@PathVariable Long idUser, @Valid @RequestBody UserUpdateRoleRequestDTO dto) {
+        userService.updateRole(idUser, dto);
     }
 }

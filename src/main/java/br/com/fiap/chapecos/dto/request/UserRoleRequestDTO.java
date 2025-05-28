@@ -1,9 +1,11 @@
 package br.com.fiap.chapecos.dto.request;
+
 import br.com.fiap.chapecos.model.Address;
+import br.com.fiap.chapecos.model.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
-public record UserRequestDTO(
+public record UserRoleRequestDTO(
 
         @Email
         @NotNull
@@ -16,6 +18,9 @@ public record UserRequestDTO(
         String password,
 
         @NotNull
-        Address address
+        Address address,
+
+        @NotNull
+        Role role
 ) {
 }
