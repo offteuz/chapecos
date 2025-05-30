@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-public record UserRoleRequestDTO(
+public record UserUpdateRequestDTO(
 
         @Email
         @NotNull
@@ -18,15 +18,6 @@ public record UserRoleRequestDTO(
         String userName,
 
         @NotNull
-        @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{4,12}$",
-                message = "A senha deve conter entre 4 e 12 caracteres, com letras maiúsculas, minúsculas, números e símbolo especial.")
-        String password,
-
-        @NotNull
-        Address address,
-
-        @NotNull
-        @Pattern(regexp = "^[A-Z]$")
-        Role role
+        Address address
 ) {
 }

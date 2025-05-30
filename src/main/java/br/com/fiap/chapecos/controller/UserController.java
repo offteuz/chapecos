@@ -1,9 +1,6 @@
 package br.com.fiap.chapecos.controller;
 
-import br.com.fiap.chapecos.dto.request.UserRequestDTO;
-import br.com.fiap.chapecos.dto.request.UserRoleRequestDTO;
-import br.com.fiap.chapecos.dto.request.UserUpdatePasswordRequestDTO;
-import br.com.fiap.chapecos.dto.request.UserUpdateRoleRequestDTO;
+import br.com.fiap.chapecos.dto.request.*;
 import br.com.fiap.chapecos.dto.response.UserResponseDTO;
 import br.com.fiap.chapecos.model.Role;
 import br.com.fiap.chapecos.service.UserService;
@@ -37,7 +34,7 @@ public class UserController {
 
     @PutMapping("/user/v1/update/{idUser}")
     @ResponseStatus(HttpStatus.OK)
-    public UserResponseDTO update(@PathVariable Long idUser, @Valid @RequestBody UserRoleRequestDTO dto) {
+    public UserResponseDTO update(@PathVariable Long idUser, @Valid @RequestBody UserUpdateRequestDTO dto) {
         return userService.update(idUser, dto);
     }
 

@@ -2,6 +2,7 @@ package br.com.fiap.chapecos.service;
 
 import br.com.fiap.chapecos.dto.request.UserRoleRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserUpdatePasswordRequestDTO;
+import br.com.fiap.chapecos.dto.request.UserUpdateRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserUpdateRoleRequestDTO;
 import br.com.fiap.chapecos.dto.response.UserResponseDTO;
 import br.com.fiap.chapecos.exception.PasswordInvalidException;
@@ -44,7 +45,7 @@ public class UserService {
         return new UserResponseDTO(user);
     }
 
-    public UserResponseDTO update(Long id, UserRoleRequestDTO dto) {
+    public UserResponseDTO update(Long id, UserUpdateRequestDTO dto) {
         User user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
