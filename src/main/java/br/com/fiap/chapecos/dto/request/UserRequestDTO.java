@@ -16,8 +16,8 @@ public record UserRequestDTO(
         String userName,
 
         @NotNull
-        @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{4,12}$",
-                message = "A senha deve conter entre 4 e 12 caracteres, com letras maiúsculas, minúsculas, números e símbolo especial.")
+        @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{4,20}$",
+                message = "A senha deve conter entre 4 e 20 caracteres, com letras maiúsculas, minúsculas, números e símbolo especial.")
         String password,
 
         @NotNull
