@@ -4,9 +4,12 @@ import br.com.fiap.chapecos.dto.request.UserUpdatePasswordRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserUpdateRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserUpdateRoleRequestDTO;
 import br.com.fiap.chapecos.dto.response.UserResponseDTO;
+import br.com.fiap.chapecos.dto.response.UserUpdateResponseDTO;
 import br.com.fiap.chapecos.exception.PasswordInvalidException;
 import br.com.fiap.chapecos.exception.UserNotFoundException;
+import br.com.fiap.chapecos.mapper.AddressMapper;
 import br.com.fiap.chapecos.mapper.UserMapper;
+import br.com.fiap.chapecos.model.Address;
 import br.com.fiap.chapecos.model.User;
 import br.com.fiap.chapecos.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,11 +24,14 @@ public class UserService {
 
     public final UserMapper userMapper;
 
+    public final AddressMapper addressMapper;
+
     public final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, AddressMapper addressMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.addressMapper = addressMapper;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -43,13 +49,13 @@ public class UserService {
         return new UserResponseDTO(user);
     }
 
-    public UserResponseDTO update(Long id, UserUpdateRequestDTO dto) {
+    public UserUpdateResponseDTO update(Long id, UserUpdateRequestDTO dto) {
         User user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
         userMapper.updateAll(dto, user);
 
-        return new UserResponseDTO(userRepository.save(user));
+        return new UserUpdateResponseDTO(userRepository.save(user));
     }
 
     public void delete(Long id) {

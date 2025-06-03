@@ -17,7 +17,7 @@ public class OpenApiConfig {
                 new Info().version("v.0.1")
                         .title("Chapecos API")
                         .description("API criada para gerenciamento de pedidos, usuários e clientes do restaurante Chapecos.")
-                        .license(new License().name("Chapecos").url("https://github.com/offteuz/"))
+                        .license(new License().name("Chapecos").url("https://github.com/offteuz/chapecos"))
         );
     }
 }

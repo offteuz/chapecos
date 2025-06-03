@@ -3,10 +3,12 @@ package br.com.fiap.chapecos.controller;
 import br.com.fiap.chapecos.dto.request.UserLoginRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserRequestDTO;
 import br.com.fiap.chapecos.dto.response.TokenResponseDTO;
+import br.com.fiap.chapecos.mapper.AddressMapper;
+import br.com.fiap.chapecos.model.Address;
 import br.com.fiap.chapecos.model.User;
 import br.com.fiap.chapecos.repository.UserRepository;
 import br.com.fiap.chapecos.service.TokenService;
-import br.com.fiap.chapecos.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,19 +24,23 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
 
-    private final UserService userService;
-
     private final UserRepository userRepository;
 
     private final TokenService tokenService;
 
-    public AuthController(AuthenticationManager authenticationManager, UserService userService, UserRepository userRepository, TokenService tokenService) {
+    private final AddressMapper addressMapper;
+
+    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, TokenService tokenService, AddressMapper addressMapper) {
         this.authenticationManager = authenticationManager;
-        this.userService = userService;
         this.userRepository = userRepository;
         this.tokenService = tokenService;
+        this.addressMapper = addressMapper;
     }
 
+    @Operation(
+            summary = "Realiza o `login` do usuário.",
+            description = "Realiza o `login` do usuário desde que as informações passadas na autenticação existam na base de dados, um token de acesso será gerado ao usuário, independente da sua função. Não exige privilégios."
+    )
     @PostMapping("/auth/v1/login")
     public ResponseEntity login(@Valid @RequestBody UserLoginRequestDTO dto) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(dto.identifier(), dto.password());
@@ -46,6 +52,10 @@ public class AuthController {
         return ResponseEntity.ok(new TokenResponseDTO(token));
     }
 
+    @Operation(
+            summary = "Realiza o cadastro do usuário.",
+            description = "Realiza o cadastro do usuário na base de dados, sendo obrigatório para a geração do token de acesso. Não exige privilégios."
+    )
     @PostMapping("/auth/v1/register")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity register(@Valid @RequestBody UserRequestDTO dto) {
@@ -54,7 +64,10 @@ public class AuthController {
         }
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(dto.password());
-        User newUser = new User(dto.email(), dto.userName(), encryptedPassword, dto.address());
+
+        Address address = addressMapper.toDto(dto.address());
+
+        User newUser = new User(dto.email(), dto.userName(), encryptedPassword, address);
 
         this.userRepository.save(newUser);
 

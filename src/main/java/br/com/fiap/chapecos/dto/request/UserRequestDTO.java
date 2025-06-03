@@ -21,6 +21,6 @@ public record UserRequestDTO(
         String password,
 
         @NotNull
-        Address address
+        AddressRequestDTO address
 ) {
 }

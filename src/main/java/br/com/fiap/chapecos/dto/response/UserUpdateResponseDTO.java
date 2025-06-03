@@ -3,7 +3,7 @@ package br.com.fiap.chapecos.dto.response;
 import br.com.fiap.chapecos.model.Role;
 import br.com.fiap.chapecos.model.User;
 
-public record UserResponseDTO(
+public record UserUpdateResponseDTO(
 
         Long id,
 
@@ -15,17 +15,17 @@ public record UserResponseDTO(
 
         Role role,
 
-        AuditAllResponseDTO audit
+        AuditUpdateAsResponseDTO audit
 ) {
 
-    public UserResponseDTO(User user) {
+    public UserUpdateResponseDTO(User user) {
         this(
                 user.getId(),
                 user.getEmail(),
                 user.getUsername(),
                 new AddressResponseDTO(user.getAddress()),
                 user.getRole(),
-                new AuditAllResponseDTO(user.getAudit().getCreateAs(), user.getAudit().getUpdateAs())
+                new AuditUpdateAsResponseDTO(user.getAudit().getUpdateAs())
         );
     }
 }

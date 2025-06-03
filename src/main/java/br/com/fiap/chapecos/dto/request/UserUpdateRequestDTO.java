@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Pattern;
 
 public record UserUpdateRequestDTO(
 
-        @Email
+        @Email()
         @NotNull
         String email,
 
@@ -17,6 +17,6 @@ public record UserUpdateRequestDTO(
         String userName,
 
         @NotNull
-        Address address
+        AddressRequestDTO address
 ) {
 }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
 
-public record AuditResponseDTO(
+public record AuditAllResponseDTO(
 
         @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
         LocalDateTime createdAs,
@@ -14,7 +14,7 @@ public record AuditResponseDTO(
         LocalDateTime updatedAs
 ) {
 
-    public AuditResponseDTO(Audit audit) {
+    public AuditAllResponseDTO(Audit audit) {
         this(
                 audit.getCreateAs(),
                 audit.getUpdateAs()
