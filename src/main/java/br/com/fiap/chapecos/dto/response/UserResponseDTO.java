@@ -1,6 +1,5 @@
 package br.com.fiap.chapecos.dto.response;
 
-import br.com.fiap.chapecos.model.Address;
 import br.com.fiap.chapecos.model.Role;
 import br.com.fiap.chapecos.model.User;
 

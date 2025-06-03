@@ -2,7 +2,6 @@ package br.com.fiap.chapecos.controller;
 
 import br.com.fiap.chapecos.dto.request.*;
 import br.com.fiap.chapecos.dto.response.UserResponseDTO;
-import br.com.fiap.chapecos.model.Role;
 import br.com.fiap.chapecos.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

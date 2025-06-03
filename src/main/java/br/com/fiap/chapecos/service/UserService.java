@@ -1,6 +1,5 @@
 package br.com.fiap.chapecos.service;
 
-import br.com.fiap.chapecos.dto.request.UserRoleRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserUpdatePasswordRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserUpdateRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserUpdateRoleRequestDTO;
@@ -8,7 +7,6 @@ import br.com.fiap.chapecos.dto.response.UserResponseDTO;
 import br.com.fiap.chapecos.exception.PasswordInvalidException;
 import br.com.fiap.chapecos.exception.UserNotFoundException;
 import br.com.fiap.chapecos.mapper.UserMapper;
-import br.com.fiap.chapecos.model.Role;
 import br.com.fiap.chapecos.model.User;
 import br.com.fiap.chapecos.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
