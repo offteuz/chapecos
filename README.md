@@ -10,27 +10,24 @@
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Arquitetura da Aplicação](#-arquitetura-da-aplicação)
 - [Estrutura do Projeto](#-estrutura-de-projeto)
-- [Endpoints da API](#-endpoints-da-api)
+- [Endpoints da API](#%EF%B8%8F-endpoints-da-api)
 - [Documentação Técnica](#-documentação-técnica)
-- [Collections para Testes](#-_collections_-para-testes)
-- [Executando a Aplicação](#-executando-a-aplicação)
+- [Collections para Testes](#-collections-para-testes)
+- [Executando a Aplicação](#%EF%B8%8F-executando-a-aplicação)
   - [1º Passo: Executando o contêiner Docker](#1º-passo-executando-o-contêiner-docker)
   - [2º Passo: Observando o pgAdmin](#2º-passo-observando-o-pgadmin)
   - [3º Passo: Swagger UI](#3º-passo-swagger-ui)
   - [4º Passo: Testes com Postman](#4º-passo-testes-com-postman)
-    - [1 - Login | POST](#1---_login_-do-usuário-teste-com-método-_post_)
-    - [2 - Register | POST](#2---_register_-com-método-_post_)
-    - [3 - Find All | GET](#3---_find-all_-com-método-_get_)
-    - [4 - Find by ID | GET](#4---_find-by-id_-com-método-_get_)
-    - [5 - Update User | PUT](#5---_update_-com-método-_put_)
-    - [6 - Update Password | PATCH](#6---_update-password_-com-método-_patch_)
-    - [7 - Update Role | PATCH](#7---_update-role_-com-método-_patch_)
-    - [8 - Delete | DELETE](#8---_delete_-com-método-_delete_)
+    - [1 - Login | POST](#1%EF%B8%8F⃣---login-do-usuário-teste-com-método-post)
+    - [2 - Register | POST](#2%EF%B8%8F⃣---register-com-método-post)
+    - [3 - Find All | GET](#3%EF%B8%8F⃣---find-all-com-método-get)
+    - [4 - Find by ID | GET](#4%EF%B8%8F⃣---find-by-id-com-método-get)
+    - [5 - Update User | PUT](#5%EF%B8%8F⃣---update-com-método-put)
+    - [6 - Update Password | PATCH](#6%EF%B8%8F⃣---update-password-com-método-patch)
+    - [7 - Update Role | PATCH](#7%EF%B8%8F⃣---update-role-com-método-patch)
+    - [8 - Delete | DELETE](#8%EF%B8%8F⃣---delete-com-método-delete)
   - [Autores](#-autores)
   - [Licença](#-licença)
-
-
-
 
 ---
 
@@ -112,7 +109,7 @@ A aplicação deve ser capaz de proporcionar ao usuário as seguintes funcionali
 
 ---
 
-## 📄 Arquitetura da Aplicação
+## 🏗️ Arquitetura da Aplicação
 
 A arquitetura aplicada de nosso projeto segue o padrão Arquitetura em Camadas 
 (_Layered Architecture_), típica de aplicações desenvolvidas com o _framework_
@@ -136,7 +133,7 @@ pelos repositórios _JPA_ (_repository_) responsáveis pela comunicação com o 
 dados.
 
 
-- **Camada de Infraestrutura**: Abrange configurações técnicas do projeto, como 
+- **Camada de Configuração (Comunicação)**: Abrange configurações técnicas do projeto, como 
 segurança (_security_) e configuração da _API_ (_config_) e inicialização de dados 
 para os primeiros testes (_initializer_).
 
@@ -144,87 +141,47 @@ Essa divisão facilita a manutenção, a realização de testes e escalabilidade
 
 Veja o diagrama que representa as camadas da aplicação:
 
-|     **Camada de API**      |
-|:--------------------------:|
-|  (_Controller_ + _DTOs_)   |
-|             ↓              |
-|   **Camada de Serviço**    |
-| (Regras + _TokenService_)  |
-|             ↓              |
-| **Camada de Persistência** |
-|  (_Repository_ + _Model_)  |
-|             ↓              |
-|     **Banco de Dados**     |
+|            🧩 **Camada de API**             |
+|:-------------------------------------------:|
+| (_Controller_, _DTOs_, _ExceptionHandler_)  |
+|                      ↓                      |
+|          🧠 **Camada de Serviço**           |
+| (Regras + Autenticação, _Mapper_, Exceções) |
+|                      ↓                      |
+|        💾 **Camada de Persistência**        |
+|          (_Repository_ + _Model_)           |
+|                      ↓                      |
+|        ⚙️ **Camada de Configuração**        |
+|   Segurança, Configuração, Inicialização    |
+|                      ↓                      |
+|          🗄️   **Banco de Dados**           |
 
 ---
 
 ## 📂 Estrutura de Projeto
 
-    ├───.idea
-    ├───.mvn
-    │   └───wrapper
-    ├───src
-    │   ├───main
-    │   │   ├───java
-    │   │   │   └───br
-    │   │   │       └───com
-    │   │   │           └───fiap
-    │   │   │               └───chapecos
-    │   │   │                   ├───config
-    │   │   │                   │   ├───configuration
-    │   │   │                   │   ├───initializer
-    │   │   │                   │   └───security
-    │   │   │                   ├───controller
-    │   │   │                   ├───dto
-    │   │   │                   │   ├───request
-    │   │   │                   │   └───response
-    │   │   │                   ├───exception
-    │   │   │                   ├───handler
-    │   │   │                   ├───mapper
-    │   │   │                   ├───model
-    │   │   │                   ├───repository
-    │   │   │                   └───service
-    │   │   └───resources
-    │   └───test
-    │       └───java
-    │           └───br
-    │               └───com
-    │                   └───fiap
-    │                       └───chapecos
-    └───target
-    ├───classes
-    │   └───br
-    │       └───com
-    │           └───fiap
-    │               └───chapecos
-    │                   ├───config
-    │                   │   ├───configuration
-    │                   │   ├───initializer
-    │                   │   └───security
-    │                   ├───controller
-    │                   ├───dto
-    │                   │   ├───request
-    │                   │   └───response
-    │                   ├───exception
-    │                   ├───handler
-    │                   ├───mapper
-    │                   ├───model
-    │                   ├───repository
-    │                   └───service
-    ├───generated-sources
-    │   └───annotations
-    │       └───br
-    │           └───com
-    │               └───fiap
-    │                   └───chapecos
-    │                       └───mapper
-    ├───generated-test-sources
-    │   └───test-annotations
-    └───test-classes
-        └───br
-            └───com
-                └───fiap
-                    └───chapecos
+    src
+    └───main
+        ├───java
+        │   └───br
+        │       └───com
+        │           └───fiap
+        │               └───chapecos
+        │                   ├───config
+        │                   │   ├───configuration
+        │                   │   ├───initializer
+        │                   │   └───security
+        │                   ├───controller
+        │                   ├───dto
+        │                   │   ├───request
+        │                   │   └───response
+        │                   ├───exception
+        │                   ├───handler
+        │                   ├───mapper
+        │                   ├───model
+        │                   ├───repository
+        │                   └───service
+        └───resources
 
 ---
 
@@ -233,13 +190,13 @@ Veja o diagrama que representa as camadas da aplicação:
 
 | Método | Endpoint                            | Descrição                  |
 | ------ |-------------------------------------|----------------------------|
-| POST   | `/auth/register/v0`                 | Criar novo usuário         |
-| POST   | `/auth/login/v0`                    | Validação de _login_       |
-| GET    | `/find-all/v0/user`                 | Listar todos os usuários   |
-| GET    | `/find-by-id/v0/user/{idUser}`      | Buscar usuário por _ID_    |
-| PUT    | `/update/v0/user/{idUser}`          | Atualizar dados do usuário |
-| PUT    | `/update-password/v0/user/{idUser}` | Troca de senha do usuário  |
-| DELETE | `/delete/v0/user/{idUser}`          | Deletar usuário            |
+| POST   | `/auth/register/v1`                 | Criar novo usuário         |
+| POST   | `/auth/login/v1`                    | Validação de _login_       |
+| GET    | `/find-all/v1/user`                 | Listar todos os usuários   |
+| GET    | `/find-by-id/v1/user/{idUser}`      | Buscar usuário por _ID_    |
+| PUT    | `/update/v1/user/{idUser}`          | Atualizar dados do usuário |
+| PUT    | `/update-password/v1/user/{idUser}` | Troca de senha do usuário  |
+| DELETE | `/delete/v1/user/{idUser}`          | Deletar usuário            |
 
 ---
 
@@ -248,11 +205,11 @@ Veja o diagrama que representa as camadas da aplicação:
 A documentação da _API_ pode ser visualizada via **Swagger** após subir a aplicação:
 
   ```
-  http://localhost:8081/swagger-ui.html
+  http://localhost:8080/swagger-ui.html
   ```
 ---
 
-## 🧪 _Collections_ para Testes
+## 🧪 Collections para Testes
 
 _Collection_ do Postman incluída no repositório: 
   ```
@@ -321,7 +278,7 @@ inteiro cadastro do usuário.
 
 Acesse a URL abaixo para ter acesso a documentação do Swagger.
     
-    http://localhost:8081/swagger-ui/index.html
+    http://localhost:8080/swagger-ui/index.html
 
 **Obs**: Vamos fazer os testes diretamente no Postman.
 
@@ -341,7 +298,7 @@ Confira abaixo a configuração de _Login_ da _collection_:
 **Chapecos / auth / Login**.
 
     Método: POST
-    URL: http://localhost:8081/api/auth/v1/login
+    URL: http://localhost:8080/api/auth/v1/login
     Body (raw, formato: JSON):
         {
             "identifier": "Admin",
@@ -367,7 +324,7 @@ Confira abaixo a configuração de _Register_ do _collection_:
 **Chapecos / auth / Register**.
 
     Método: POST
-    URL: http://localhost:8081/api/auth/v1/register
+    URL: http://localhost:8080/api/auth/v1/register
     Body (raw, formato: JSON):
         {
         "email": "lucash.96@hotmail.com",
@@ -397,7 +354,7 @@ Confira abaixo a configuração de _Find All_ da _collection_:
 **Chapecos / Controller / Find All**.
 
     Método: GET
-    URL: http://localhost:8081/api/user/v1/find-all
+    URL: http://localhost:8080/api/user/v1/find-all
 
 **Obs**: Você precisa pegar o _Token_ enviado no momento do _login_ do usuário teste 
 e enviar no _**Headers**_ desta requisição, conforme observamos abaixo:
@@ -457,7 +414,7 @@ Confira abaixo a configuração de _Find All_ da _collection_:
 **Chapecos / Controller / Find by ID**.
 
     Método: GET
-    URL: http://localhost:8081/api/user/v1/find-by-id/2
+    URL: http://localhost:8080/api/user/v1/find-by-id/2
     Headers:
         Authorization = Seu token
 
@@ -489,7 +446,7 @@ Confira abaixo a configuração de _Update_ da _collection_:
 **Chapecos / Controller / Update**.
 
     Método: PUT
-    URL: http://localhost:8081/api/user/v1/update/2
+    URL: http://localhost:8080/api/user/v1/update/2
     Headers:
       Authorization: Seu token
 
@@ -545,7 +502,7 @@ Confira abaixo a configuração de _Update_ da _collection_:
 **Chapecos / Controller / Update Password**.
 
     Método: Patch
-    URL: http://localhost:8081/api/user/v1/update-password/2
+    URL: http://localhost:8080/api/user/v1/update-password/2
 
 
 Ainda não testamos o _login_ do novo usuário. Precisamos testá-lo antes de enviar 
@@ -604,7 +561,7 @@ Confira abaixo a configuração de _Update_ da _collection_:
 **Chapecos / Controller / Update Role**.
 
     Método: Patch
-    URL: http://localhost:8081/api/user/v1/update-role/2
+    URL: http://localhost:8080/api/user/v1/update-role/2
     Headers:
       Authorization: Seu Token.
 
@@ -687,7 +644,7 @@ Confira abaixo a configuração de _DELETE_ da _collection_:
 **Chapecos / Controller / Delete**.
 
     Método: Delete
-    URL: http://localhost:8081/api/user/v1/delete/2
+    URL: http://localhost:8080/api/user/v1/delete/2
     Headers: 
       Authorization: Seu Token
 
