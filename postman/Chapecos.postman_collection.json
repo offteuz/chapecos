@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "227b9cdf-08c1-4396-9c7c-7eabfa2caea7",
+		"name": "Chapecos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19665331",
+		"_collection_link": "https://cloudy-comet-958835.postman.co/workspace/3fa609a6-2be5-4726-8479-307d657e6569/collection/19665331-227b9cdf-08c1-4396-9c7c-7eabfa2caea7?action=share&source=collection_link&creator=19665331"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"identifier\": \"Admin\",\r\n  \"password\": \"admin\"\r\n}\r\n\r\n/* Modelo de JSON para Logar \r\n{\r\n   \"identifier\": \"string\",\r\n   \"password\": \"string\"\r\n}\r\n*/",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"lucash.96@hotmail.com\",\r\n  \"userName\": \"lucas\",\r\n  \"password\": \"user\",\r\n  \"address\": {\r\n    \"postalCode\": \"04857-580\",\r\n    \"street\": \"Rua Batistta Locatello\",\r\n    \"number\": \"88\",\r\n    \"neighborhood\": \"Jardim Varginha\",\r\n    \"city\": \"São Paulo\",\r\n    \"state\": \"SP\",\r\n    \"country\": \"Brasil\"\r\n  }\r\n}\r\n\r\n/* Modelo de JSON para Registrar\r\n{\r\n  \"email\": \"string\",\r\n  \"userName\": \"string\",\r\n  \"password\": \"string\",\r\n  \"address\": {\r\n    \"postalCode\": \"40096-992\",\r\n    \"street\": \"yzoTRrISRodAuaYQKxgvEbLGSwLwjceDywCybAKnFjUnvmjsUtTnUac\",\r\n    \"number\": \"894608621048260755427640820195726605821394642782373\",\r\n    \"neighborhood\": \"g\",\r\n    \"city\": \"sYrhNCssgfhEejTuXTS qMngSKo\",\r\n    \"state\": \"OO\",\r\n    \"country\": \"pqDbdnHvk\"\r\n  }\r\n}\r\n*/\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/v1/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Controller",
+			"item": [
+				{
+					"name": "Find All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "/* Modelo JSON esperado:\r\n\r\n[\r\n  {\r\n    \"id\": 9007199254740991,\r\n    \"email\": \"string\",\r\n    \"userName\": \"string\",\r\n    \"address\": {\r\n      \"postalCode\": \"string\",\r\n      \"street\": \"string\",\r\n      \"number\": \"string\",\r\n      \"neighborhood\": \"string\",\r\n      \"city\": \"string\",\r\n      \"state\": \"string\",\r\n      \"country\": \"string\"\r\n    },\r\n    \"role\": \"ADMIN\",\r\n    \"audit\": {\r\n      \"createdAs\": \"2025-05-29T03:45:38.123Z\",\r\n      \"updatedAs\": \"2025-05-29T03:45:38.123Z\"\r\n    }\r\n  }\r\n]\r\n\r\n*/",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/v1/find-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"find-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/v1/find-by-id/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"find-by-id",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJDaGFwZWNvcyBBUEkiLCJzdWIiOiJBZG1pbiIsImV4cCI6MTc0ODkxODU0Mn0.effNDb8K6UW8rfafya6yYUc1r6foBsgpx4-uVt9k44c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"lucash.96@hotmail.com\",\r\n  \"userName\": \"lucas amaro\",\r\n  \"address\": {\r\n    \"postalCode\": \"04884-020\",\r\n    \"street\": \"Rua Nicolas Bernier\",\r\n    \"number\": \"20\",\r\n    \"neighborhood\": \"Parelheiro\",\r\n    \"city\": \"São Paulo\",\r\n    \"state\": \"SP\",\r\n    \"country\": \"Brasil\"\r\n  }\r\n}\r\n\r\n/* Modelo de JSON para Atualizar\r\n\r\n{\r\n  \"email\": \"string\",\r\n  \"userName\": \"siGNXsBbyFVFyzlUPzBDbAvZvEJcwfttYbzTIncaqbEeAwBdrJTUANgVlbXNGrfs                                         fMaZTsYhGayO\",\r\n  \"address\": {\r\n    \"postalCode\": \"38024-129\",\r\n    \"street\": \"helAnmYhcgFwnUVwGCwgRWaIsaUXxvDZawhkWSKL Ur LEtseFWtYDvfZjavGQGKTIeDiLmJiZdTqnRrhQzVtc\",\r\n    \"number\": \"13691391481717976\",\r\n    \"neighborhood\": \"mJRCL\",\r\n    \"city\": \"LodjLyoYDlJc nEJDGrsTJqhAQtQHCNoZVUAEvhlMpECVOQSkT\",\r\n    \"state\": \"LS\",\r\n    \"country\": \"hHntOCQGTQmjFX sQEQpivvjdVIuSkqXpJdQPSVuLECdZOYNxzCuOASjBNmi iEbqODvnwu\"\r\n  }\r\n}\r\n*/",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/v1/update/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // Senha atual\r\n    \"currentPassword\": \"user\", \r\n  \r\n    // Nova Senha\r\n    \"newPassword\": \"Adm!n1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/v1/update-password/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"update-password",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/v1/delete/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Role",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"role\": \"ADMIN\"\r\n}\r\n\r\n/* Modelo de JSON para Logar \r\n{\r\n  \"role\": \"ADMIN\"\r\n}\r\n*/",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/v1/update-role/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"update-role",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
