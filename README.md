@@ -188,15 +188,17 @@ Veja o diagrama que representa as camadas da aplicação:
 ## 🛠️ Endpoints da API
 
 
-| Método | Endpoint                            | Descrição                  |
-| ------ |-------------------------------------|----------------------------|
-| POST   | `/auth/register/v1`                 | Criar novo usuário         |
-| POST   | `/auth/login/v1`                    | Validação de _login_       |
-| GET    | `/find-all/v1/user`                 | Listar todos os usuários   |
-| GET    | `/find-by-id/v1/user/{idUser}`      | Buscar usuário por _ID_    |
-| PUT    | `/update/v1/user/{idUser}`          | Atualizar dados do usuário |
-| PUT    | `/update-password/v1/user/{idUser}` | Troca de senha do usuário  |
-| DELETE | `/delete/v1/user/{idUser}`          | Deletar usuário            |
+| Método | Endpoint                            | Descrição                   |
+|--------|-------------------------------------|-----------------------------|
+| POST   | `/api/auth/v1/register`             | Criar um usuário            |
+| POST   | `/api/auth/v1/login`                | Validação de _login_        |
+| GET    | `/api/user/v1/find-all`             | Listar todos os usuários    |
+| GET    | `/api/user/v1/find-by-id/{id}`      | Buscar usuário por _ID_     |
+| PUT    | `/api/user/v1/update/{id}`          | Atualizar dados do usuário  |
+| PATCH  | `/api/user/v1/update-password/{id}` | Troca de senha do usuário   |
+| PATCH  | `/api/user/v1/update-role/{id}`     | Atualizar o tipo do usuário |
+| DELETE | `/api/user/v1/delete/{id}`          | Deletar um usuário          |
+
 
 ---
 
@@ -212,9 +214,13 @@ A documentação da _API_ pode ser visualizada via **Swagger** após subir a apl
 ## 🧪 Collections para Testes
 
 _Collection_ do Postman incluída no repositório: 
-  ```
-  postman_collection.json
-  ```
+
+    Chapecos.postman_collection.json
+
+Acesse o link para a _Collection_ [aqui](https://github.com/offteuz/chapecos/tree/master/postman).
+
+  
+
 ---
 
 ## ▶️ Executando a Aplicação
