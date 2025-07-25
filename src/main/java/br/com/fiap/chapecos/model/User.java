@@ -1,24 +1,26 @@
 package br.com.fiap.chapecos.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.validation.Constraint;
 import jakarta.validation.Valid;
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "T_USER",
         uniqueConstraints = {
                 @UniqueConstraint(name = "uk_user_email", columnNames = "email"),
@@ -42,14 +44,43 @@ public class User implements UserDetails {
     private String password;
 
     @Embedded
-    @Valid
     private Address address;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(fetch = FetchType.LAZY)
+    private Set<Establishment> establishments;
+
     @Embedded
-    @Valid
-    private Audit audit;
+    private Audit audit = new Audit();
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", address=" + address +
+                ", role=" + role +
+                ", audit=" + audit +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(getId(), user.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 
     @PrePersist
     public void onPrePersist() {

@@ -5,8 +5,9 @@ import br.com.fiap.chapecos.model.Address;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
+@Mapper(componentModel = "spring",
+        unmappedTargetPolicy = ReportingPolicy.WARN)
 public interface AddressMapper {
 
-    Address toDto(AddressRequestDTO dto);
+    Address toModel(AddressRequestDTO dto);
 }

@@ -10,7 +10,7 @@ public record UserUpdatePasswordRequestDTO(
 
         @NotNull
         @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{4,20}$",
-                message = "A nova senha deve conter entre 4 e 20 caracteres, com letras maiúsculas, minúsculas, números e símbolo especial.")
+                message = "A nova senha deve conter entre 4 e 20 caracteres, com letras maiúsculas, minúsculas, números e símbolos especiais.")
         String newPassword
 ) {
 }

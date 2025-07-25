@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Pattern;
 
 public record UserUpdateRequestDTO(
 
-        @Email()
+        @Email
         @NotNull
         String email,
 

@@ -3,25 +3,33 @@ package br.com.fiap.chapecos.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
 @Embeddable
 public class Audit {
 
-    @CreationTimestamp
-    @Column(name = "created_as", updatable = false)
-    private LocalDateTime createAs;
+    @Column(name = "created_by")
+    @CreatedBy
+    private String createdBy;
 
-    @UpdateTimestamp
-    @Column(name = "updated_as")
-    private LocalDateTime updateAs;
+    @Column(name = "created_date")
+    @CreatedDate
+    private Instant createdDate;
+
+    @Column(name = "last_modified_by")
+    @LastModifiedBy
+    private String lastModifiedBy;
+
+    @Column(name = "last_modified_date")
+    @LastModifiedDate
+    private Instant lastModifiedDate;
 }

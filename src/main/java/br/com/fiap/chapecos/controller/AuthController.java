@@ -3,8 +3,6 @@ package br.com.fiap.chapecos.controller;
 import br.com.fiap.chapecos.dto.request.UserLoginRequestDTO;
 import br.com.fiap.chapecos.dto.request.UserRequestDTO;
 import br.com.fiap.chapecos.dto.response.TokenResponseDTO;
-import br.com.fiap.chapecos.mapper.AddressMapper;
-import br.com.fiap.chapecos.model.Address;
 import br.com.fiap.chapecos.model.User;
 import br.com.fiap.chapecos.repository.UserRepository;
 import br.com.fiap.chapecos.service.TokenService;
@@ -28,13 +26,10 @@ public class AuthController {
 
     private final TokenService tokenService;
 
-    private final AddressMapper addressMapper;
-
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, TokenService tokenService, AddressMapper addressMapper) {
+    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, TokenService tokenService) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.tokenService = tokenService;
-        this.addressMapper = addressMapper;
     }
 
     @Operation(
@@ -65,9 +60,7 @@ public class AuthController {
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(dto.password());
 
-        Address address = addressMapper.toDto(dto.address());
-
-        User newUser = new User(dto.email(), dto.userName(), encryptedPassword, address);
+        User newUser = new User(dto.email(), dto.userName(), encryptedPassword, dto.address());
 
         this.userRepository.save(newUser);
 
