@@ -1,23 +1,32 @@
 package br.com.fiap.chapecos.dto.response;
 
+import br.com.fiap.chapecos.config.view.View;
 import br.com.fiap.chapecos.model.Audit;
 import br.com.fiap.chapecos.model.Item;
 import br.com.fiap.chapecos.model.LocalConsumption;
+import com.fasterxml.jackson.annotation.JsonView;
 
 public record ItemResponseDTO(
 
-        Long id,
+        @JsonView(View.Compact.class)
+        Long idItem,
 
+        @JsonView(View.Compact.class)
         String name,
 
+        @JsonView(View.Synthetic.class)
         String description,
 
+        @JsonView(View.Compact.class)
         Double price,
 
+        @JsonView(View.Analytic.class)
         LocalConsumptionResponseDTO localConsumption,
 
+        @JsonView(View.Compact.class)
         MenuResponseDTO menu,
 
+        @JsonView(View.Complete.class)
         Audit audit
 ) {
 

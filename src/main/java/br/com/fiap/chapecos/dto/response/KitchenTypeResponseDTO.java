@@ -6,10 +6,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 public record KitchenTypeResponseDTO(
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         String name,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         KitchenCategoryResponseDTO kitchenCategory
 ) {
 

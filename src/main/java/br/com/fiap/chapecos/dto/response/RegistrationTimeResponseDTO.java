@@ -10,19 +10,19 @@ import java.time.LocalTime;
 
 public record RegistrationTimeResponseDTO(
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         Long id,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         DayOfWeek dayOfWeek,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         LocalTime opening,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         LocalTime closing,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         EstablishmentResponseDTO establishment,
 
         @JsonView(View.Complete.class)

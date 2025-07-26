@@ -8,16 +8,16 @@ import java.util.Set;
 
 public record MenuResponseDTO(
 
-        @JsonView(View.Synthetic.class)
-        Long id,
+        @JsonView(View.Compact.class)
+        Long idMenu,
 
-        @JsonView(View.Synthetic.class)
-        MenuType menuType,
+        @JsonView(View.Compact.class)
+        MenuTypeResponseDTO menuType,
 
         @JsonView(View.Analytic.class)
         Set<Item> items,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         EstablishmentResponseDTO establishment,
 
         @JsonView(View.Complete.class)
@@ -27,7 +27,7 @@ public record MenuResponseDTO(
     public MenuResponseDTO(Menu menu) {
         this(
                 menu.getId(),
-                menu.getMenuType(),
+                new MenuTypeResponseDTO(menu.getMenuType()),
                 menu.getItems(),
                 new EstablishmentResponseDTO(menu.getEstablishment()),
                 menu.getAudit()

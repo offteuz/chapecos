@@ -1,13 +1,8 @@
 package br.com.fiap.chapecos.mapper;
 
 import br.com.fiap.chapecos.dto.request.ItemRequestDTO;
-import br.com.fiap.chapecos.dto.request.KitchenTypeRequestDTO;
 import br.com.fiap.chapecos.dto.request.LocalConsumptionRequestDTO;
-import br.com.fiap.chapecos.dto.response.KitchenCategoryResponseDTO;
-import br.com.fiap.chapecos.dto.response.KitchenTypeResponseDTO;
-import br.com.fiap.chapecos.dto.response.LocalConsumptionResponseDTO;
 import br.com.fiap.chapecos.model.Item;
-import br.com.fiap.chapecos.model.KitchenType;
 import br.com.fiap.chapecos.model.LocalConsumption;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

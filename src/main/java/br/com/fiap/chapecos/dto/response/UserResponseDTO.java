@@ -9,19 +9,19 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 public record UserResponseDTO(
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         Long id,
 
         @JsonView(View.Analytic.class)
         String email,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         String userName,
 
         @JsonView(View.Analytic.class)
         Address address,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         Role role,
 
         @JsonView(View.Complete.class)

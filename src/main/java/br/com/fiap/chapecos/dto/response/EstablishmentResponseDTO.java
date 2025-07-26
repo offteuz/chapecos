@@ -8,13 +8,13 @@ import java.util.Set;
 
 public record EstablishmentResponseDTO(
 
-        @JsonView(View.Synthetic.class)
-        Long id,
+        @JsonView(View.Compact.class)
+        Long idEstablishment,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         String name,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         String cnpj,
 
         @JsonView(View.Synthetic.class)
@@ -23,10 +23,10 @@ public record EstablishmentResponseDTO(
         @JsonView(View.Synthetic.class)
         AddressResponseDTO address,
 
-        @JsonView(View.Analytic.class)
+        @JsonView(View.Synthetic.class)
         String timeZone,
 
-        @JsonView(View.Synthetic.class)
+        @JsonView(View.Compact.class)
         UserResponseDTO user,
 
         @JsonView(View.Analytic.class)
