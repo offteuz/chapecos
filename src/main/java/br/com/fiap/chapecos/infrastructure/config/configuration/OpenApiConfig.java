@@ -1,4 +1,4 @@
-package br.com.fiap.chapecos.config.configuration;
+package br.com.fiap.chapecos.infrastructure.config.configuration;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.OpenAPI;

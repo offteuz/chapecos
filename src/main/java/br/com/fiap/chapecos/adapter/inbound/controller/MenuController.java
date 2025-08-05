@@ -1,9 +1,9 @@
-package br.com.fiap.chapecos.controller;
+package br.com.fiap.chapecos.adapter.inbound.controller;
 
 import br.com.fiap.chapecos.config.view.View;
-import br.com.fiap.chapecos.dto.request.MenuRequestDTO;
-import br.com.fiap.chapecos.dto.response.MenuResponseDTO;
-import br.com.fiap.chapecos.service.MenuService;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.MenuRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.response.MenuResponseDTO;
+import br.com.fiap.chapecos.application.service.MenuService;
 import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

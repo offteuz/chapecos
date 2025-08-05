@@ -1,7 +1,7 @@
-package br.com.fiap.chapecos.handler;
+package br.com.fiap.chapecos.infrastructure.handler;
 
 import br.com.fiap.chapecos.infrastructure.config.configuration.ApiError;
-import br.com.fiap.chapecos.exception.*;
+import br.com.fiap.chapecos.infrastructure.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

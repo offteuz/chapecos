@@ -1,11 +1,11 @@
-package br.com.fiap.chapecos.controller;
+package br.com.fiap.chapecos.adapter.inbound.controller;
 
-import br.com.fiap.chapecos.dto.request.*;
-import br.com.fiap.chapecos.dto.response.UserResponseDTO;
-import br.com.fiap.chapecos.dto.response.UserUpdateResponseDTO;
-import br.com.fiap.chapecos.service.UserService;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.UserUpdatePasswordRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.UserUpdateRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.UserUpdateRoleRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.response.UserResponseDTO;
+import br.com.fiap.chapecos.application.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -48,7 +48,7 @@ public class UserController {
     )
     @PutMapping("/user/v1/update/{idUser}")
     @ResponseStatus(HttpStatus.OK)
-    public UserUpdateResponseDTO update(@PathVariable Long idUser, @Valid @RequestBody UserUpdateRequestDTO dto) {
+    public UserResponseDTO update(@PathVariable Long idUser, @Valid @RequestBody UserUpdateRequestDTO dto) {
         return userService.update(idUser, dto);
     }
 

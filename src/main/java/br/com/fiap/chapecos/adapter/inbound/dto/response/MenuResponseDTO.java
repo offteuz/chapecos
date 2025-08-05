@@ -1,7 +1,9 @@
-package br.com.fiap.chapecos.dto.response;
+package br.com.fiap.chapecos.adapter.inbound.dto.response;
 
 import br.com.fiap.chapecos.config.view.View;
-import br.com.fiap.chapecos.model.*;
+import br.com.fiap.chapecos.domain.model.Audit;
+import br.com.fiap.chapecos.domain.model.Item;
+import br.com.fiap.chapecos.domain.model.Menu;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.util.Set;

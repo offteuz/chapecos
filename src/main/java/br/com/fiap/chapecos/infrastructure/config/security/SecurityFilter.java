@@ -1,7 +1,7 @@
-package br.com.fiap.chapecos.config.security;
+package br.com.fiap.chapecos.infrastructure.config.security;
 
 import br.com.fiap.chapecos.domain.repository.UserRepository;
-import br.com.fiap.chapecos.service.TokenService;
+import br.com.fiap.chapecos.application.service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

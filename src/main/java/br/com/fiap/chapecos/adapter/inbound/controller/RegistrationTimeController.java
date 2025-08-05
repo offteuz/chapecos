@@ -1,9 +1,9 @@
-package br.com.fiap.chapecos.controller;
+package br.com.fiap.chapecos.adapter.inbound.controller;
 
 import br.com.fiap.chapecos.config.view.View;
-import br.com.fiap.chapecos.dto.request.RegistrationTimeRequestDTO;
-import br.com.fiap.chapecos.dto.response.RegistrationTimeResponseDTO;
-import br.com.fiap.chapecos.service.RegistrationTimeService;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.RegistrationTimeRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.response.RegistrationTimeResponseDTO;
+import br.com.fiap.chapecos.application.service.RegistrationTimeService;
 import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

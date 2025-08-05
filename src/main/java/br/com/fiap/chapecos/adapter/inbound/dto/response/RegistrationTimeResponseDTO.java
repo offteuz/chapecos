@@ -1,8 +1,8 @@
-package br.com.fiap.chapecos.dto.response;
+package br.com.fiap.chapecos.adapter.inbound.dto.response;
 
 import br.com.fiap.chapecos.config.view.View;
-import br.com.fiap.chapecos.model.Audit;
-import br.com.fiap.chapecos.model.RegistrationTime;
+import br.com.fiap.chapecos.domain.model.Audit;
+import br.com.fiap.chapecos.domain.model.RegistrationTime;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.time.DayOfWeek;

@@ -1,4 +1,4 @@
-package br.com.fiap.chapecos.config.initializer;
+package br.com.fiap.chapecos.infrastructure.config.initializer;
 
 import br.com.fiap.chapecos.domain.model.Address;
 import br.com.fiap.chapecos.domain.model.Audit;

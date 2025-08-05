@@ -1,9 +1,9 @@
-package br.com.fiap.chapecos.mapper;
+package br.com.fiap.chapecos.adapter.outbound.mapper;
 
-import br.com.fiap.chapecos.dto.request.ItemRequestDTO;
-import br.com.fiap.chapecos.dto.request.LocalConsumptionRequestDTO;
-import br.com.fiap.chapecos.model.Item;
-import br.com.fiap.chapecos.model.LocalConsumption;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.ItemRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.LocalConsumptionRequestDTO;
+import br.com.fiap.chapecos.domain.model.Item;
+import br.com.fiap.chapecos.domain.model.LocalConsumption;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

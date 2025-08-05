@@ -1,4 +1,4 @@
-package br.com.fiap.chapecos.model;
+package br.com.fiap.chapecos.domain.model;
 
 public enum KitchenCategory {
 

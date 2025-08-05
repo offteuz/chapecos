@@ -1,4 +1,4 @@
-package br.com.fiap.chapecos.config.configuration;
+package br.com.fiap.chapecos.infrastructure.config.configuration;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;

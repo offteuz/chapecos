@@ -1,4 +1,4 @@
-package br.com.fiap.chapecos.config.security;
+package br.com.fiap.chapecos.infrastructure.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

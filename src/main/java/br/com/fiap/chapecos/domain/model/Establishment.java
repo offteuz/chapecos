@@ -1,4 +1,4 @@
-package br.com.fiap.chapecos.model;
+package br.com.fiap.chapecos.domain.model;
 
 import br.com.fiap.chapecos.logic.ExpedientTime;
 import br.com.fiap.chapecos.logic.OperationTime;

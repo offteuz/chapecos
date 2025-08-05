@@ -1,8 +1,8 @@
-package br.com.fiap.chapecos.mapper;
+package br.com.fiap.chapecos.adapter.outbound.mapper;
 
-import br.com.fiap.chapecos.exception.UserNotFoundException;
-import br.com.fiap.chapecos.model.User;
-import br.com.fiap.chapecos.repository.UserRepository;
+import br.com.fiap.chapecos.infrastructure.exception.UserNotFoundException;
+import br.com.fiap.chapecos.domain.model.User;
+import br.com.fiap.chapecos.domain.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
 @Component

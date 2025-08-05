@@ -1,6 +1,6 @@
 package br.com.fiap.chapecos.config.auditing;
 
-import br.com.fiap.chapecos.model.User;
+import br.com.fiap.chapecos.domain.model.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;

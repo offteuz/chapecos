@@ -1,4 +1,4 @@
-package br.com.fiap.chapecos.exception;
+package br.com.fiap.chapecos.infrastructure.exception;
 
 public class UserNotAdminException extends RuntimeException{
 

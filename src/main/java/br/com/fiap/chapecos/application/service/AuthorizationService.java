@@ -1,6 +1,6 @@
-package br.com.fiap.chapecos.service;
+package br.com.fiap.chapecos.application.service;
 
-import br.com.fiap.chapecos.exception.UserNotFoundException;
+import br.com.fiap.chapecos.infrastructure.exception.UserNotFoundException;
 import br.com.fiap.chapecos.domain.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

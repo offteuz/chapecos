@@ -1,11 +1,11 @@
-package br.com.fiap.chapecos.service;
+package br.com.fiap.chapecos.application.service;
 
-import br.com.fiap.chapecos.dto.request.ItemRequestDTO;
-import br.com.fiap.chapecos.dto.response.ItemResponseDTO;
-import br.com.fiap.chapecos.exception.ItemNotFoundException;
-import br.com.fiap.chapecos.mapper.ItemMapper;
-import br.com.fiap.chapecos.model.Item;
-import br.com.fiap.chapecos.repository.ItemRepository;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.ItemRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.response.ItemResponseDTO;
+import br.com.fiap.chapecos.infrastructure.exception.ItemNotFoundException;
+import br.com.fiap.chapecos.adapter.outbound.mapper.ItemMapper;
+import br.com.fiap.chapecos.domain.model.Item;
+import br.com.fiap.chapecos.domain.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

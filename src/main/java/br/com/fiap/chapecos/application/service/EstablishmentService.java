@@ -1,14 +1,13 @@
-package br.com.fiap.chapecos.service;
+package br.com.fiap.chapecos.application.service;
 
-import br.com.fiap.chapecos.dto.request.EstablishmentRequestDTO;
-import br.com.fiap.chapecos.dto.response.EstablishmentResponseDTO;
-import br.com.fiap.chapecos.exception.EstablishmentNotFoundException;
-import br.com.fiap.chapecos.exception.UserNotAdminException;
-import br.com.fiap.chapecos.mapper.EstablishmentMapper;
-import br.com.fiap.chapecos.model.Address;
-import br.com.fiap.chapecos.model.Establishment;
-import br.com.fiap.chapecos.model.Role;
-import br.com.fiap.chapecos.repository.EstablishmentRepository;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.EstablishmentRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.response.EstablishmentResponseDTO;
+import br.com.fiap.chapecos.infrastructure.exception.EstablishmentNotFoundException;
+import br.com.fiap.chapecos.infrastructure.exception.UserNotAdminException;
+import br.com.fiap.chapecos.adapter.outbound.mapper.EstablishmentMapper;
+import br.com.fiap.chapecos.domain.model.Establishment;
+import br.com.fiap.chapecos.domain.model.Role;
+import br.com.fiap.chapecos.domain.repository.EstablishmentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

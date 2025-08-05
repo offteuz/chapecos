@@ -1,9 +1,9 @@
-package br.com.fiap.chapecos.mapper;
+package br.com.fiap.chapecos.adapter.outbound.mapper;
 
-import br.com.fiap.chapecos.dto.request.MenuRequestDTO;
-import br.com.fiap.chapecos.dto.request.MenuTypeRequestDTO;
-import br.com.fiap.chapecos.model.Menu;
-import br.com.fiap.chapecos.model.MenuType;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.MenuRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.MenuTypeRequestDTO;
+import br.com.fiap.chapecos.domain.model.Menu;
+import br.com.fiap.chapecos.domain.model.MenuType;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -23,6 +23,12 @@ public interface MenuMapper {
             return null;
         }
 
-        return MenuType.valueOf(dto.name());
+        for (MenuType type : MenuType.values()) {
+            if (type.getName().equalsIgnoreCase(dto.name())) {
+                return type;
+            }
+        }
+
+        throw new IllegalArgumentException("Tipo de menu inválido" + dto.name());
     }
 }

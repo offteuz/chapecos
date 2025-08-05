@@ -1,7 +1,9 @@
-package br.com.fiap.chapecos.dto.response;
+package br.com.fiap.chapecos.adapter.inbound.dto.response;
 
 import br.com.fiap.chapecos.config.view.View;
-import br.com.fiap.chapecos.model.*;
+import br.com.fiap.chapecos.domain.model.Audit;
+import br.com.fiap.chapecos.domain.model.Establishment;
+import br.com.fiap.chapecos.domain.model.RegistrationTime;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.util.Set;
@@ -29,7 +31,7 @@ public record EstablishmentResponseDTO(
         @JsonView(View.Compact.class)
         UserResponseDTO user,
 
-        @JsonView(View.Analytic.class)
+        @JsonView(View.Synthetic.class)
         Set<RegistrationTime> registrationTimes,
 
         @JsonView(View.Complete.class)

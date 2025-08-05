@@ -1,4 +1,4 @@
-package br.com.fiap.chapecos.mapper;
+package br.com.fiap.chapecos.adapter.outbound.mapper;
 
 import br.com.fiap.chapecos.adapter.inbound.dto.request.AddressRequestDTO;
 import br.com.fiap.chapecos.domain.model.Address;

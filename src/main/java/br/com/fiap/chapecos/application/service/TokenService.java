@@ -1,7 +1,7 @@
-package br.com.fiap.chapecos.service;
+package br.com.fiap.chapecos.application.service;
 
-import br.com.fiap.chapecos.exception.GenerateTokenErrorException;
-import br.com.fiap.chapecos.exception.ValidateTokenErrorException;
+import br.com.fiap.chapecos.infrastructure.exception.GenerateTokenErrorException;
+import br.com.fiap.chapecos.infrastructure.exception.ValidateTokenErrorException;
 import br.com.fiap.chapecos.domain.model.User;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -17,6 +17,13 @@ import java.time.ZoneOffset;
 public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;
+
+    public TokenService(
+            @Value("${api.security.token.secret}")
+            String secret
+            ) {
+        this.secret = secret;
+    }
 
     public String tokengenerate(User user) {
         try {

@@ -1,11 +1,11 @@
-package br.com.fiap.chapecos.service;
+package br.com.fiap.chapecos.application.service;
 
-import br.com.fiap.chapecos.dto.request.MenuRequestDTO;
-import br.com.fiap.chapecos.dto.response.MenuResponseDTO;
-import br.com.fiap.chapecos.exception.MenuNotFoundException;
-import br.com.fiap.chapecos.mapper.MenuMapper;
-import br.com.fiap.chapecos.model.Menu;
-import br.com.fiap.chapecos.repository.MenuRepository;
+import br.com.fiap.chapecos.adapter.inbound.dto.request.MenuRequestDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.response.MenuResponseDTO;
+import br.com.fiap.chapecos.infrastructure.exception.MenuNotFoundException;
+import br.com.fiap.chapecos.adapter.outbound.mapper.MenuMapper;
+import br.com.fiap.chapecos.domain.model.Menu;
+import br.com.fiap.chapecos.domain.repository.MenuRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

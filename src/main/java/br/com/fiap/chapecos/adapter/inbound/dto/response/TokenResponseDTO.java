@@ -1,4 +1,4 @@
-package br.com.fiap.chapecos.dto.response;
+package br.com.fiap.chapecos.adapter.inbound.dto.response;
 
 public record TokenResponseDTO(
 

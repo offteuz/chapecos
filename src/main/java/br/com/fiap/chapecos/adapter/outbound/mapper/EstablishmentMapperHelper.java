@@ -1,8 +1,8 @@
-package br.com.fiap.chapecos.mapper;
+package br.com.fiap.chapecos.adapter.outbound.mapper;
 
-import br.com.fiap.chapecos.exception.EstablishmentNotFoundException;
-import br.com.fiap.chapecos.model.Establishment;
-import br.com.fiap.chapecos.repository.EstablishmentRepository;
+import br.com.fiap.chapecos.infrastructure.exception.EstablishmentNotFoundException;
+import br.com.fiap.chapecos.domain.model.Establishment;
+import br.com.fiap.chapecos.domain.repository.EstablishmentRepository;
 import org.springframework.stereotype.Component;
 
 @Component

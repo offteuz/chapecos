@@ -1,21 +1,31 @@
-package br.com.fiap.chapecos.dto.response;
+package br.com.fiap.chapecos.adapter.inbound.dto.response;
 
-import br.com.fiap.chapecos.model.Role;
-import br.com.fiap.chapecos.model.User;
+import br.com.fiap.chapecos.config.view.View;
+import br.com.fiap.chapecos.domain.model.Address;
+import br.com.fiap.chapecos.domain.model.Audit;
+import br.com.fiap.chapecos.domain.model.Role;
+import br.com.fiap.chapecos.domain.model.User;
+import com.fasterxml.jackson.annotation.JsonView;
 
 public record UserResponseDTO(
 
+        @JsonView(View.Compact.class)
         Long id,
 
+        @JsonView(View.Analytic.class)
         String email,
 
+        @JsonView(View.Compact.class)
         String userName,
 
-        AddressResponseDTO address,
+        @JsonView(View.Analytic.class)
+        Address address,
 
+        @JsonView(View.Compact.class)
         Role role,
 
-        AuditAllResponseDTO audit
+        @JsonView(View.Complete.class)
+        Audit audit
 ) {
 
     public UserResponseDTO(User user) {
@@ -23,9 +33,9 @@ public record UserResponseDTO(
                 user.getId(),
                 user.getEmail(),
                 user.getUsername(),
-                new AddressResponseDTO(user.getAddress()),
+                user.getAddress(),
                 user.getRole(),
-                new AuditAllResponseDTO(user.getAudit().getCreateAs(), user.getAudit().getUpdateAs())
+                user.getAudit()
         );
     }
 }

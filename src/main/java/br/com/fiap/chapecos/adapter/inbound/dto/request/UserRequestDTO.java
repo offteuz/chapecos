@@ -1,4 +1,5 @@
-package br.com.fiap.chapecos.dto.request;
+package br.com.fiap.chapecos.adapter.inbound.dto.request;
+import br.com.fiap.chapecos.domain.model.Address;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
