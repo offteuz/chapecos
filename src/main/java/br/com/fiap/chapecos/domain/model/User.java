@@ -50,7 +50,7 @@ public class User implements UserDetails {
 
     @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Establishment> establishments;
 
     @Embedded

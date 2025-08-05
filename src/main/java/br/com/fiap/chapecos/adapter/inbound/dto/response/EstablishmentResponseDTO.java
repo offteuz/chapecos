@@ -6,6 +6,7 @@ import br.com.fiap.chapecos.domain.model.Establishment;
 import br.com.fiap.chapecos.domain.model.RegistrationTime;
 import com.fasterxml.jackson.annotation.JsonView;
 
+import java.util.Objects;
 import java.util.Set;
 
 public record EstablishmentResponseDTO(
@@ -43,7 +44,8 @@ public record EstablishmentResponseDTO(
                 establishment.getId(),
                 establishment.getName(),
                 establishment.getCnpj(),
-                new KitchenTypeResponseDTO(establishment.getKitchenType()),
+                Objects.nonNull(establishment.getKitchenType()) ? new KitchenTypeResponseDTO(establishment.getKitchenType()) : null,
+//                new KitchenTypeResponseDTO(establishment.getKitchenType()),
                 new AddressResponseDTO(establishment.getAddress()),
                 establishment.getTimeZone(),
                 new UserResponseDTO(establishment.getUser()),

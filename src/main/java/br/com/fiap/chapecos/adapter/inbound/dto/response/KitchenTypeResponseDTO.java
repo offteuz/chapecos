@@ -4,6 +4,8 @@ import br.com.fiap.chapecos.config.view.View;
 import br.com.fiap.chapecos.domain.model.KitchenType;
 import com.fasterxml.jackson.annotation.JsonView;
 
+import java.util.Objects;
+
 public record KitchenTypeResponseDTO(
 
         @JsonView(View.Compact.class)
@@ -15,8 +17,11 @@ public record KitchenTypeResponseDTO(
 
     public KitchenTypeResponseDTO(KitchenType kitchenType) {
         this(
-                kitchenType.getName(),
-                new KitchenCategoryResponseDTO(kitchenType.getCategoryKitchen())
+                Objects.nonNull(kitchenType) ? kitchenType.getName() : null,
+                Objects.nonNull(kitchenType) && Objects.nonNull(kitchenType.getCategoryKitchen()) ?
+                        new KitchenCategoryResponseDTO(kitchenType.getCategoryKitchen()) : null
+//                kitchenType.getName(),
+//                new KitchenCategoryResponseDTO(kitchenType.getCategoryKitchen())
         );
     }
 }
