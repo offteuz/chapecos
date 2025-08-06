@@ -35,7 +35,7 @@ public class EstablishmentController {
         return establishmentService.findAll();
     }
 
-    @JsonView({View.Synthetic.class})
+    @JsonView({View.Complete.class})
     @GetMapping("/establishment/v1/find-by-id/{idEstablishment}")
     @ResponseStatus(HttpStatus.OK)
     public EstablishmentResponseDTO findById(@PathVariable Long idEstablishment) {

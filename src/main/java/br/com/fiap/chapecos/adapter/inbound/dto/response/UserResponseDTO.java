@@ -25,7 +25,7 @@ public record UserResponseDTO(
         Role role,
 
         @JsonView(View.Complete.class)
-        Audit audit
+        AuditResponseDTO audit
 ) {
 
     public UserResponseDTO(User user) {
@@ -35,7 +35,7 @@ public record UserResponseDTO(
                 user.getUsername(),
                 user.getAddress(),
                 user.getRole(),
-                user.getAudit()
+                new AuditResponseDTO(user.getAudit())
         );
     }
 }

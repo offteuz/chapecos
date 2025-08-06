@@ -133,6 +133,7 @@ class ItemServiceTest {
                 10.50,
                 LocalConsumption.RESTAURANTE,
                 menu,
+                "https://www.pexels.com/pt-br/foto/33283959",
                 new Audit()
         );
 
@@ -200,6 +201,7 @@ class ItemServiceTest {
                         10.50,
                         LocalConsumption.RESTAURANTE,
                         menu,
+                        "https://www.pexels.com/pt-br/foto/33283959",
                         new Audit()
                 ),
                 new Item(
@@ -209,6 +211,7 @@ class ItemServiceTest {
                         12.50,
                         LocalConsumption.RESTAURANTE,
                         menu,
+                        "https://www.pexels.com/pt-br/foto/33283959",
                         new Audit()
                 )
         );
@@ -265,6 +268,7 @@ class ItemServiceTest {
                 10.50,
                 LocalConsumption.RESTAURANTE,
                 menu,
+                "https://www.pexels.com/pt-br/foto/33283959",
                 new Audit()
         );
 

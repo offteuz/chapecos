@@ -28,4 +28,17 @@ public class Address {
     private String state;
 
     private String country;
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "postalCode='" + postalCode + '\'' +
+                ", street='" + street + '\'' +
+                ", number='" + number + '\'' +
+                ", neighborhood='" + neighborhood + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }

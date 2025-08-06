@@ -47,4 +47,11 @@ public class ItemController {
     public void delete(@PathVariable Long idItem) {
         itemService.delete(idItem);
     }
+
+    @JsonView(View.Complete.class)
+    @PatchMapping("/item/v1/update/{idItem}")
+    @ResponseStatus(HttpStatus.OK)
+    public ItemResponseDTO update(@Valid @PathVariable Long idItem, @RequestBody ItemRequestDTO dto) {
+        return itemService.update(idItem, dto);
+    }
 }

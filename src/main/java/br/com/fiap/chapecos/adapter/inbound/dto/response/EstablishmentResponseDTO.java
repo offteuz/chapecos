@@ -35,7 +35,7 @@ public record EstablishmentResponseDTO(
         Set<RegistrationTime> registrationTimes,
 
         @JsonView(View.Complete.class)
-        Audit audit
+        AuditResponseDTO audit
 ) {
     public EstablishmentResponseDTO(Establishment establishment) {
 
@@ -48,7 +48,7 @@ public record EstablishmentResponseDTO(
                 establishment.getTimeZone(),
                 new UserResponseDTO(establishment.getUser()),
                 establishment.getRegistrationTimes(),
-                establishment.getAudit()
+                new AuditResponseDTO(establishment.getAudit())
         );
     }
 }

@@ -26,7 +26,10 @@ public record ItemResponseDTO(
         MenuResponseDTO menu,
 
         @JsonView(View.Complete.class)
-        Audit audit
+        String picture,
+
+        @JsonView(View.Complete.class)
+        AuditResponseDTO audit
 ) {
 
     public ItemResponseDTO(Item item) {
@@ -37,7 +40,8 @@ public record ItemResponseDTO(
                 item.getPrice(),
                 new LocalConsumptionResponseDTO(item.getLocalConsumption()),
                 new MenuResponseDTO(item.getMenu()),
-                item.getAudit()
+                item.getPicture(),
+                new AuditResponseDTO(item.getAudit())
         );
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -42,5 +43,29 @@ public class RegistrationTime {
     public RegistrationTime(LocalTime opening, LocalTime closing) {
         this.opening = opening;
         this.closing = closing;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RegistrationTime that)) return false;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "RegistrationTime{" +
+                "id=" + id +
+                ", dayOfWeek=" + dayOfWeek +
+                ", opening=" + opening +
+                ", closing=" + closing +
+                ", establishment=" + establishment +
+                ", audit=" + audit +
+                '}';
     }
 }

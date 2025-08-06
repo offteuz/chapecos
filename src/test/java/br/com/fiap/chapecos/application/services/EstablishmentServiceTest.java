@@ -2,10 +2,7 @@ package br.com.fiap.chapecos.application.services;
 
 import br.com.fiap.chapecos.adapter.inbound.dto.request.AddressRequestDTO;
 import br.com.fiap.chapecos.adapter.inbound.dto.request.EstablishmentRequestDTO;
-import br.com.fiap.chapecos.adapter.inbound.dto.response.AddressResponseDTO;
-import br.com.fiap.chapecos.adapter.inbound.dto.response.EstablishmentResponseDTO;
-import br.com.fiap.chapecos.adapter.inbound.dto.response.KitchenTypeResponseDTO;
-import br.com.fiap.chapecos.adapter.inbound.dto.response.UserResponseDTO;
+import br.com.fiap.chapecos.adapter.inbound.dto.response.*;
 import br.com.fiap.chapecos.adapter.outbound.mapper.AddressMapper;
 import br.com.fiap.chapecos.adapter.outbound.mapper.EstablishmentMapper;
 import br.com.fiap.chapecos.application.service.EstablishmentService;
@@ -138,7 +135,7 @@ class EstablishmentServiceTest {
                 "00:00:00",
                 new UserResponseDTO(user),
                 new HashSet<>(),
-                establishment.getAudit()
+                new AuditResponseDTO(establishment.getAudit())
         );
 
         Mockito.when(establishmentMapper.toModel(request)).thenReturn(establishment);

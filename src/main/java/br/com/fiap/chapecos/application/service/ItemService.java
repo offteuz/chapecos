@@ -25,6 +25,8 @@ public class ItemService {
     public ItemResponseDTO create(ItemRequestDTO dto) {
         Item item = itemMapper.toModel(dto);
 
+        item.setPicture("https://www.pexels.com/pt-br/foto/33283959");
+
         return new ItemResponseDTO(itemRepository.save(item));
     }
 
@@ -47,5 +49,16 @@ public class ItemService {
                 .orElseThrow(ItemNotFoundException::new);
 
         itemRepository.delete(item);
+    }
+
+    public ItemResponseDTO update(Long idItem, ItemRequestDTO dto) {
+        Item item = itemRepository.findById(idItem)
+                .orElseThrow(ItemNotFoundException::new);
+
+        itemMapper.updateFromDto(dto, item);
+
+        Item savedItem = itemRepository.save(item);
+
+        return new ItemResponseDTO(savedItem);
     }
 }

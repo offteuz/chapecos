@@ -1,5 +1,7 @@
 package br.com.fiap.chapecos.domain.model;
 
+import br.com.fiap.chapecos.config.view.View;
+import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

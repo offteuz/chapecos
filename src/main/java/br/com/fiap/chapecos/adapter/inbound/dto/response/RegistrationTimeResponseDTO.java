@@ -26,7 +26,7 @@ public record RegistrationTimeResponseDTO(
         EstablishmentResponseDTO establishment,
 
         @JsonView(View.Complete.class)
-        Audit audit
+        AuditResponseDTO audit
 ) {
 
     public RegistrationTimeResponseDTO(RegistrationTime registrationTime) {
@@ -36,7 +36,7 @@ public record RegistrationTimeResponseDTO(
                 registrationTime.getOpening(),
                 registrationTime.getClosing(),
                 new EstablishmentResponseDTO(registrationTime.getEstablishment()),
-                registrationTime.getAudit()
+                new AuditResponseDTO(registrationTime.getAudit())
         );
     }
 }

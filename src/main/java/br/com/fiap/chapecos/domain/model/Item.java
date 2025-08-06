@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.Objects;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -38,6 +40,34 @@ public class Item {
     @JoinColumn(name = "menu_id", referencedColumnName = "id_menu", foreignKey = @ForeignKey(name = "fk_item_menu"))
     private Menu menu;
 
+    private String picture;
+
     @Embedded
     private Audit audit = new Audit();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Item item)) return false;
+        return Objects.equals(getId(), item.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", localConsumption=" + localConsumption +
+                ", menu=" + menu +
+                ", picture='" + picture + '\'' +
+                ", audit=" + audit +
+                '}';
+    }
 }

@@ -23,7 +23,7 @@ public record MenuResponseDTO(
         EstablishmentResponseDTO establishment,
 
         @JsonView(View.Complete.class)
-        Audit audit
+        AuditResponseDTO audit
 ) {
 
     public MenuResponseDTO(Menu menu) {
@@ -32,7 +32,7 @@ public record MenuResponseDTO(
                 new MenuTypeResponseDTO(menu.getMenuType()),
                 menu.getItems(),
                 new EstablishmentResponseDTO(menu.getEstablishment()),
-                menu.getAudit()
+                new AuditResponseDTO(menu.getAudit())
         );
     }
 }
