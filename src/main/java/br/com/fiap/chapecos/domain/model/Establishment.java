@@ -20,13 +20,19 @@ import java.util.stream.Collectors;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "T_ESTABLISHMENT")
+@Entity
+@Table(name = "T_ESTABLISHMENT")
 @EntityListeners(AuditingEntityListener.class)
 public class Establishment {
 
     @Id
-    @SequenceGenerator(name = "seq_establishment", sequenceName = "seq_establishment", allocationSize = 1)
-    @GeneratedValue(generator = "seq_establishment", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "seq_establishment",
+            sequenceName = "seq_establishment",
+            allocationSize = 1)
+    @GeneratedValue(
+            generator = "seq_establishment",
+            strategy = GenerationType.SEQUENCE)
     @Column(name = "id_establishment")
     private Long id;
 

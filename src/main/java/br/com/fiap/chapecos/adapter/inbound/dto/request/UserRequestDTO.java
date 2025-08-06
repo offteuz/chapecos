@@ -1,5 +1,6 @@
 package br.com.fiap.chapecos.adapter.inbound.dto.request;
 import br.com.fiap.chapecos.domain.model.Address;
+import br.com.fiap.chapecos.domain.model.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -23,4 +24,7 @@ public record UserRequestDTO(
         @NotNull
         Address address
 ) {
+        public User toUser() {
+                return new User(this.email, this.userName, this.password, this.address);
+        }
 }

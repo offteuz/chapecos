@@ -4,6 +4,7 @@ import br.com.fiap.chapecos.infrastructure.config.configuration.ApiError;
 import br.com.fiap.chapecos.infrastructure.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,7 +17,13 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class RestExceptionHandler {
 
-    @ExceptionHandler({UserNotFoundException.class, RoleNotFoundException.class})
+    @ExceptionHandler({
+            UserNotFoundException.class,
+            RoleNotFoundException.class,
+            MenuNotFoundException.class,
+            ItemNotFoundException.class,
+            EstablishmentNotFoundException.class
+    })
     public ResponseEntity<ApiError> notFoundException(RuntimeException e) {
         ApiError apiError = ApiError
                 .builder()
@@ -63,6 +70,8 @@ public class RestExceptionHandler {
                 .map(FieldError::getDefaultMessage)
                 .collect(Collectors.toList());
 
+        System.out.println("Erros de validação: " + errorList);
+
         ApiError apiError = ApiError
                 .builder()
                 .timestamp(LocalDateTime.now())
@@ -83,5 +92,17 @@ public class RestExceptionHandler {
                 .errors((List.of(e.getMessage())))
                 .build();
         return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ApiError> handleBadCredentialsException(BadCredentialsException e) {
+        ApiError apiError = ApiError
+                .builder()
+                .timestamp(LocalDateTime.now())
+                .code(HttpStatus.UNAUTHORIZED.value())
+                .status(HttpStatus.UNAUTHORIZED.name())
+                .errors(List.of(e.getMessage()))
+                .build();
+        return new ResponseEntity<>(apiError, HttpStatus.UNAUTHORIZED);
     }
 }
