@@ -21,7 +21,7 @@ public class RegistrationTimeController {
         this.registrationTimeService = registrationTimeService;
     }
 
-    @JsonView(View.Analytic.class)
+    @JsonView(View.Compact.class)
     @PostMapping("/registration-time/v1/create")
     @ResponseStatus(HttpStatus.CREATED)
     public RegistrationTimeResponseDTO create(@Valid @RequestBody RegistrationTimeRequestDTO dto) {

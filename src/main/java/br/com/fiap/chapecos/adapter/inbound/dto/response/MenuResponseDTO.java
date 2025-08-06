@@ -7,6 +7,7 @@ import br.com.fiap.chapecos.domain.model.Menu;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public record MenuResponseDTO(
 
@@ -17,7 +18,7 @@ public record MenuResponseDTO(
         MenuTypeResponseDTO menuType,
 
         @JsonView(View.Analytic.class)
-        Set<Item> items,
+        Set<ItemResponseDTO> items,
 
         @JsonView(View.Compact.class)
         EstablishmentResponseDTO establishment,
@@ -30,7 +31,9 @@ public record MenuResponseDTO(
         this(
                 menu.getId(),
                 new MenuTypeResponseDTO(menu.getMenuType()),
-                menu.getItems(),
+                menu.getItems().stream()
+                        .map(ItemResponseDTO::new)
+                        .collect(Collectors.toSet()),
                 new EstablishmentResponseDTO(menu.getEstablishment()),
                 new AuditResponseDTO(menu.getAudit())
         );

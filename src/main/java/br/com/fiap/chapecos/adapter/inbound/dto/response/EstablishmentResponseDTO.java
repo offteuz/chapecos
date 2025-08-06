@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public record EstablishmentResponseDTO(
 
@@ -33,7 +34,7 @@ public record EstablishmentResponseDTO(
         UserResponseDTO user,
 
         @JsonView(View.Synthetic.class)
-        Set<RegistrationTime> registrationTimes,
+        Set<RegistrationTimeResponseDTO> registrationTimes,
 
         @JsonView(View.Complete.class)
         AuditResponseDTO audit
@@ -45,10 +46,12 @@ public record EstablishmentResponseDTO(
                 establishment.getName(),
                 establishment.getCnpj(),
                 Objects.nonNull(establishment.getKitchenType()) ? new KitchenTypeResponseDTO(establishment.getKitchenType()) : null,
-                new AddressResponseDTO(establishment.getAddress()),
+                establishment.getAddress() != null ? new AddressResponseDTO(establishment.getAddress()) : null,
                 establishment.getTimeZone(),
                 new UserResponseDTO(establishment.getUser()),
-                establishment.getRegistrationTimes(),
+                establishment.getRegistrationTimes().stream()
+                        .map(RegistrationTimeResponseDTO::new)
+                        .collect(Collectors.toSet()),
                 new AuditResponseDTO(establishment.getAudit())
         );
     }

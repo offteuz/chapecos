@@ -43,7 +43,7 @@ public class RegistrationTimeService {
         Establishment establishment = establishmentRepository.findById(dto.idEstablishment())
                 .orElseThrow(EstablishmentNotFoundException::new);
 
-        RegistrationTime registrationTime = registrationTimeMapper.toModel(dto);
+        RegistrationTime registrationTime = registrationTimeMapper.toEntity(dto);
 
         Set<RegistrationTime> futureState = new HashSet<>(establishment.getRegistrationTimes());
         futureState.add(registrationTime);

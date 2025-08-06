@@ -1,7 +1,6 @@
 package br.com.fiap.chapecos.adapter.inbound.dto.response;
 
 import br.com.fiap.chapecos.config.view.View;
-import br.com.fiap.chapecos.domain.model.Audit;
 import br.com.fiap.chapecos.domain.model.RegistrationTime;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -23,7 +22,7 @@ public record RegistrationTimeResponseDTO(
         LocalTime closing,
 
         @JsonView(View.Compact.class)
-        EstablishmentResponseDTO establishment,
+        EstablishmentSummaryResponseDTO establishment,
 
         @JsonView(View.Complete.class)
         AuditResponseDTO audit
@@ -35,7 +34,7 @@ public record RegistrationTimeResponseDTO(
                 registrationTime.getDayOfWeek(),
                 registrationTime.getOpening(),
                 registrationTime.getClosing(),
-                new EstablishmentResponseDTO(registrationTime.getEstablishment()),
+                new EstablishmentSummaryResponseDTO(registrationTime.getEstablishment()),
                 new AuditResponseDTO(registrationTime.getAudit())
         );
     }

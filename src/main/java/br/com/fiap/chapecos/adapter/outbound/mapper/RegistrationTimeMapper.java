@@ -25,6 +25,11 @@ public interface RegistrationTimeMapper {
         return rt;
     }
 
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "audit", ignore = true)
+    @Mapping(source = "idEstablishment", target = "establishment")
+    RegistrationTime toEntity(RegistrationTimeRequestDTO dto);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateFromDto(RegistrationTimeRequestDTO dto, @MappingTarget RegistrationTime registrationTime);
 }

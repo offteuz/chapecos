@@ -23,7 +23,7 @@ public record ItemResponseDTO(
         LocalConsumptionResponseDTO localConsumption,
 
         @JsonView(View.Compact.class)
-        MenuResponseDTO menu,
+        MenuSummaryResponseDTO menu,
 
         @JsonView(View.Complete.class)
         String picture,
@@ -39,7 +39,7 @@ public record ItemResponseDTO(
                 item.getDescription(),
                 item.getPrice(),
                 new LocalConsumptionResponseDTO(item.getLocalConsumption()),
-                new MenuResponseDTO(item.getMenu()),
+                new MenuSummaryResponseDTO(item.getMenu()),
                 item.getPicture(),
                 new AuditResponseDTO(item.getAudit())
         );
