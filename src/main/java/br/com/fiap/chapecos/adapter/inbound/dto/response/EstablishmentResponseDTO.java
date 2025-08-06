@@ -45,7 +45,6 @@ public record EstablishmentResponseDTO(
                 establishment.getName(),
                 establishment.getCnpj(),
                 Objects.nonNull(establishment.getKitchenType()) ? new KitchenTypeResponseDTO(establishment.getKitchenType()) : null,
-//                new KitchenTypeResponseDTO(establishment.getKitchenType()),
                 new AddressResponseDTO(establishment.getAddress()),
                 establishment.getTimeZone(),
                 new UserResponseDTO(establishment.getUser()),

@@ -7,7 +7,6 @@ import br.com.fiap.chapecos.application.service.EstablishmentService;
 import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,5 +46,12 @@ public class EstablishmentController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long idEstablishment) {
         establishmentService.delete(idEstablishment);
+    }
+
+    @JsonView({View.Complete.class})
+    @PatchMapping("/establishment/v1/update/{idEstablishment}")
+    @ResponseStatus(HttpStatus.OK)
+    public EstablishmentResponseDTO update(@Valid @PathVariable Long idEstablishment, @RequestBody EstablishmentRequestDTO dto) {
+        return establishmentService.update(idEstablishment, dto);
     }
 }

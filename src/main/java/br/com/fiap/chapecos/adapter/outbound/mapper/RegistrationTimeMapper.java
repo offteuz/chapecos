@@ -3,9 +3,7 @@ package br.com.fiap.chapecos.adapter.outbound.mapper;
 import br.com.fiap.chapecos.adapter.inbound.dto.request.RegistrationTimeRequestDTO;
 import br.com.fiap.chapecos.domain.model.Establishment;
 import br.com.fiap.chapecos.domain.model.RegistrationTime;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring",
         uses = {EstablishmentMapperHelper.class},
@@ -14,8 +12,7 @@ public interface RegistrationTimeMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(source = "idEstablishment", target = "establishment")
-    //RegistrationTime toModel(RegistrationTimeRequestDTO dto);
-    public default RegistrationTime toModel(RegistrationTimeRequestDTO dto) {
+    default RegistrationTime toModel(RegistrationTimeRequestDTO dto) {
         RegistrationTime rt = new RegistrationTime();
         rt.setDayOfWeek(dto.dayOfWeek());
         rt.setOpening(dto.opening());
@@ -28,4 +25,6 @@ public interface RegistrationTimeMapper {
         return rt;
     }
 
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateFromDto(RegistrationTimeRequestDTO dto, @MappingTarget RegistrationTime registrationTime);
 }

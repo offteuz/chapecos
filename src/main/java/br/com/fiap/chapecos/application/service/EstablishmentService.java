@@ -34,8 +34,8 @@ public class EstablishmentService {
         return new EstablishmentResponseDTO(establishmentRepository.save(establishment));
     }
 
-    public EstablishmentResponseDTO findById(Long id) {
-        Establishment establishment = establishmentRepository.findById(id)
+    public EstablishmentResponseDTO findById(Long idEstablishment) {
+        Establishment establishment = establishmentRepository.findById(idEstablishment)
                 .orElseThrow(EstablishmentNotFoundException::new);
 
         return new EstablishmentResponseDTO(establishment);
@@ -48,10 +48,19 @@ public class EstablishmentService {
                 .toList();
     }
 
-    public void delete(Long id) {
-        Establishment establishment = establishmentRepository.findById(id)
+    public void delete(Long idEstablishment) {
+        Establishment establishment = establishmentRepository.findById(idEstablishment)
                 .orElseThrow(EstablishmentNotFoundException::new);
 
         establishmentRepository.delete(establishment);
+    }
+
+    public EstablishmentResponseDTO update(Long idEstablishment, EstablishmentRequestDTO dto) {
+        Establishment establishment = establishmentRepository.findById(idEstablishment)
+                .orElseThrow(EstablishmentNotFoundException::new);
+
+        establishmentMapper.updateFromDto(dto, establishment);
+
+        return new EstablishmentResponseDTO(establishmentRepository.save(establishment));
     }
 }

@@ -82,4 +82,13 @@ public class RegistrationTimeService {
 
         registrationTimeRepository.delete(registrationTime);
     }
+
+    public RegistrationTimeResponseDTO update(Long idRegistrationTime, RegistrationTimeRequestDTO dto) {
+        RegistrationTime registrationTime = registrationTimeRepository.findById(idRegistrationTime)
+                .orElseThrow(RegistrationTimeNotFoundException::new);
+
+        registrationTimeMapper.updateFromDto(dto, registrationTime);
+
+        return new RegistrationTimeResponseDTO(registrationTimeRepository.save(registrationTime));
+    }
 }

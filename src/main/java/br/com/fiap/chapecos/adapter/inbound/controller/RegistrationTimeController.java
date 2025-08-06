@@ -9,6 +9,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class RegistrationTimeController {
@@ -24,5 +26,32 @@ public class RegistrationTimeController {
     @ResponseStatus(HttpStatus.CREATED)
     public RegistrationTimeResponseDTO create(@Valid @RequestBody RegistrationTimeRequestDTO dto) {
         return registrationTimeService.create(dto);
+    }
+
+    @JsonView(View.Compact.class)
+    @GetMapping("/registration-time/v1/find-all")
+    @ResponseStatus(HttpStatus.OK)
+    public List<RegistrationTimeResponseDTO> findAll() {
+        return registrationTimeService.findAll();
+    }
+
+    @JsonView(View.Complete.class)
+    @GetMapping("/registration-time/v1/find-by-id/{idRegistrationTime}")
+    @ResponseStatus(HttpStatus.OK)
+    public RegistrationTimeResponseDTO findById(@PathVariable Long idRegistrationTime) {
+        return registrationTimeService.findById(idRegistrationTime);
+    }
+
+    @DeleteMapping("/registration-time/v1/delete/{idRegistrationTime}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long idRegistrationTime) {
+        registrationTimeService.delete(idRegistrationTime);
+    }
+
+    @JsonView(View.Complete.class)
+    @PatchMapping("/registration-time/v1/update/{idRegistrationTime}")
+    @ResponseStatus(HttpStatus.OK)
+    public RegistrationTimeResponseDTO update(@Valid @PathVariable Long idRegistrationTime, @RequestBody RegistrationTimeRequestDTO dto) {
+        return registrationTimeService.update(idRegistrationTime, dto);
     }
 }

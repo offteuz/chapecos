@@ -4,9 +4,7 @@ import br.com.fiap.chapecos.adapter.inbound.dto.request.MenuRequestDTO;
 import br.com.fiap.chapecos.adapter.inbound.dto.request.MenuTypeRequestDTO;
 import br.com.fiap.chapecos.domain.model.Menu;
 import br.com.fiap.chapecos.domain.model.MenuType;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.WARN,
@@ -17,6 +15,9 @@ public interface MenuMapper {
     @Mapping(target = "items", ignore = true)
     @Mapping(source = "idEstablishment", target = "establishment")
     Menu toModel(MenuRequestDTO dto);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateFromDto(MenuRequestDTO dto, @MappingTarget Menu menu);
 
     default MenuType map(MenuTypeRequestDTO dto) {
         if (dto == null || dto.name() == null || dto.name().isBlank()) {

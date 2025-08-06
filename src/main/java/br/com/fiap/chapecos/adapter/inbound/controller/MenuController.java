@@ -47,4 +47,11 @@ public class MenuController {
     public void delete(@PathVariable Long idMenu) {
         menuService.delete(idMenu);
     }
+
+    @JsonView(View.Complete.class)
+    @PatchMapping("/menu/v1/update/{idMenu}")
+    @ResponseStatus(HttpStatus.OK)
+    public MenuResponseDTO update(@Valid @PathVariable Long idMenu, @RequestBody MenuRequestDTO dto) {
+        return menuService.update(idMenu, dto);
+    }
 }

@@ -155,6 +155,7 @@ public class ItemControllerIntegrationTest {
                         "Com batatas fritas",
                         89.90, LocalConsumption.RESTAURANTE,
                         menu,
+                        "https://www.pexels.com/pt-br/foto/33283959",
                         null));
         itemRepository.save(
                 new Item(
@@ -164,6 +165,7 @@ public class ItemControllerIntegrationTest {
                         65.50,
                         LocalConsumption.RESTAURANTE,
                         menu,
+                        "https://www.pexels.com/pt-br/foto/33283959",
                         null));
 
         // Executa a requisição HTTP GET e verifica a lista de itens
@@ -188,6 +190,7 @@ public class ItemControllerIntegrationTest {
                         45.00,
                         LocalConsumption.RESTAURANTE,
                         menu,
+                        "https://www.pexels.com/pt-br/foto/33283959",
                         null));
 
         // Busca o item pelo ID e verifica os detalhes
@@ -222,6 +225,7 @@ public class ItemControllerIntegrationTest {
                         25.00,
                         LocalConsumption.RESTAURANTE,
                         menu,
+                        "https://www.pexels.com/pt-br/foto/33283959",
                         null));
 
         // Executa a requisição DELETE e espera um 204

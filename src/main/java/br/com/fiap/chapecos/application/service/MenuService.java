@@ -48,4 +48,13 @@ public class MenuService {
 
         menuRepository.delete(menu);
     }
+
+    public MenuResponseDTO update(Long idMenu, MenuRequestDTO dto) {
+        Menu menu = menuRepository.findById(idMenu)
+                .orElseThrow(MenuNotFoundException::new);
+
+        menuMapper.updateFromDto(dto, menu);
+
+        return new MenuResponseDTO(menuRepository.save(menu));
+    }
 }

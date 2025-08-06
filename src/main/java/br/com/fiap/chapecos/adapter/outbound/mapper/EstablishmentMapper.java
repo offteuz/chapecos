@@ -7,10 +7,7 @@ import br.com.fiap.chapecos.adapter.inbound.dto.response.KitchenCategoryResponse
 import br.com.fiap.chapecos.adapter.inbound.dto.response.KitchenTypeResponseDTO;
 import br.com.fiap.chapecos.domain.model.Establishment;
 import br.com.fiap.chapecos.domain.model.KitchenType;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring",
     uses = {UserMapperHelper.class, AddressMapper.class},
@@ -28,7 +25,8 @@ public interface EstablishmentMapper {
     @Mapping(source = "kitchenType", target = "kitchenType")
     EstablishmentResponseDTO toResponse(Establishment establishment);
 
-    void update(EstablishmentRequestDTO dto, @MappingTarget Establishment establishment);
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateFromDto(EstablishmentRequestDTO dto, @MappingTarget Establishment establishment);
 
     default KitchenType map(KitchenTypeRequestDTO dto) {
         if (dto == null || dto.name() == null || dto.name().isBlank()) {
